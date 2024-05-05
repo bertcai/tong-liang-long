@@ -1,0 +1,11 @@
+@import './base.css';
+
+body {
+  background-image: url('./img/background.png');
+  background-size: cover;
+  color: var(--color-text-base);
+}
+
+#app {
+  height: 100vh;
+}
