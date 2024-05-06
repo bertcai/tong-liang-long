@@ -15,7 +15,7 @@
           <router-view></router-view>
         </div>
       </div>
-      <div class="right">
+      <div class="right" v-if="!isIndex">
         <div class="side-nav">
           <SideNav :navList="navList" v-model:active="active" />
         </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import BaseLayout from '@/components/BaseLayout.vue'
 import SideNav from '@/components/SideNav.vue'
 import { useRoute } from 'vue-router'
@@ -84,17 +84,32 @@ const navList = [
 ]
 
 const active = ref(navList[0])
+const isIndex = ref(false)
 
 onMounted(() => {
   const link = route.fullPath
   console.log(route)
   active.value = navList.find((item) => item.link === link) || navList[0]
+  if (link === '/catalogues/colorlamp/layout') {
+    isIndex.value = true
+  }
+})
+
+watch(route, () => {
+  const link = route.fullPath
+  active.value = navList.find((item) => item.link === link) || navList[0]
+  if (link === '/catalogues/colorlamp/layout') {
+    isIndex.value = true
+  } else {
+    isIndex.value = false
+  }
 })
 </script>
 
 <style scoped>
 .wrapper {
   display: flex;
+  height: 100%;
   .left {
     display: flex;
     flex-direction: column;
@@ -123,6 +138,7 @@ onMounted(() => {
     .content {
       display: flex;
       justify-content: center;
+      height: 100%;
     }
   }
   .right {

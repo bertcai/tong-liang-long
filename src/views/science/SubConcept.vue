@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="img">
-      <img src="@/assets/img/science/concept.png" />
-    </div>
+    <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17848323"></div>
     <div class="description">
       <div class="item">
         <div class="color"></div>
@@ -13,15 +11,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useScriptTag } from '@vueuse/core'
+useScriptTag('https://public.flourish.studio/resources/embed.js')
 </script>
 
 <style scoped>
 .wrapper {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+  padding-left: 220px;
+  margin-top: 10px;
   .description {
     display: flex;
     flex-wrap: wrap;
@@ -39,5 +40,15 @@ import { ref } from 'vue'
       }
     }
   }
+}
+.flourish-embed {
+  width: 1200px;
+  height: 650px;
+  background: #fff;
+}
+</style>
+<style>
+iframe {
+  height: 650px !important;
 }
 </style>

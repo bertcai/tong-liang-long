@@ -50,6 +50,7 @@ const router = createRouter({
       path: '/catalogues/colorlamp/layout', name: 'colorlamp-layout', component: () => import('../views/catalogues/colorLamp/LayoutView.vue'),
       redirect: '/catalogues/colorlamp/layout/paideng',
       children: [
+        { path: '', name: 'colorlamp-index', component: () => import('../views/catalogues/colorLamp/index.vue') },
         { path: 'paideng', name: 'paideng', component: () => import('../views/catalogues/colorLamp/SubPaideng.vue') },
         { path: 'zhukennangua', name: 'zhukennangua', component: () => import('../views/catalogues/colorLamp/SubZhukennangua.vue') },
         { path: 'niqiuchitangyuan', name: 'niqiuchitangyuan', component: () => import('../views/catalogues/colorLamp/SubNiqiuchitangyuan.vue') },
@@ -64,6 +65,7 @@ const router = createRouter({
       path: '/catalogues/dragonlamp/layout', name: 'dragonlamp-layout', component: () => import('../views/catalogues/dragonLamp/LayoutView.vue'),
       redirect: '/catalogues/dragonlamp/layout/darulong',
       children: [
+        { path: '', name: 'dragonlamp-index', component: () => import('../views/catalogues/dragonLamp/index.vue') },
         { path: 'darulong', name: 'darulong', component: () => import('../views/catalogues/dragonLamp/SubDarulong.vue') },
         { path: 'bandenglong', name: 'bandenglong', component: () => import('../views/catalogues/dragonLamp/SubBandenglong.vue') },
         { path: 'cailong', name: 'cailong', component: () => import('../views/catalogues/dragonLamp/SubCailong.vue') },

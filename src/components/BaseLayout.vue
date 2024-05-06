@@ -39,6 +39,7 @@ const props = defineProps<{
   display: flex;
   flex-direction: column;
   padding: 80px;
+  height: 100vh;
   .nav {
     display: flex;
     justify-content: end;
@@ -71,6 +72,7 @@ const props = defineProps<{
   }
   .content {
     margin-top: 42px;
+    height: 100%;
   }
 }
 </style>
