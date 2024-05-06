@@ -111,7 +111,6 @@ onMounted(() => {
       align-items: flex-start;
       padding-left: 180px;
       width: 100%;
-      height: 100%;
       .title {
         display: flex;
         align-items: center;
