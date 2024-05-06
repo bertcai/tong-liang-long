@@ -25,9 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import BaseLayout from '@/components/BaseLayout.vue'
 import SideNav from '@/components/SideNav.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const navList = [
   {
@@ -45,6 +48,12 @@ const navList = [
 ]
 
 const active = ref(navList[0])
+
+onMounted(() => {
+  const link = route.fullPath
+  console.log(route)
+  active.value = navList.find((item) => item.link === link) || navList[0]
+})
 </script>
 
 <style scoped>
