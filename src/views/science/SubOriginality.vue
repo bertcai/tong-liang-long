@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="description">
-      近几十年来，铜梁龙进行了创新设计，集狮头、鹿角、 虾腿、鳄鱼嘴、乌龟颈、蛇身、鱼鳞、蜃腹、鱼
-      脊、虎掌、鹰爪、金鱼尾于龙一身。
+      近几十年来，铜梁龙进行了创新设计，集狮头、鹿角、 虾腿、鳄鱼嘴、乌龟颈、蛇身、鱼鳞、蜃腹、鱼
+      脊、虎掌、鹰爪、金鱼尾于龙一身。
     </div>
   </div>
 </template>
@@ -11,12 +11,12 @@
 import { onMounted } from 'vue'
 import { onBeforeUnmount } from 'vue'
 onMounted(() => {
-  const app = document.querySelector('#app')
+  const app = document.querySelector('#app') as Element
   app.className = 'science-origin'
 })
 
 onBeforeUnmount(() => {
-  const app = document.querySelector('#app')
+  const app = document.querySelector('#app') as Element
   app.className = ''
 })
 </script>
@@ -25,7 +25,7 @@ onBeforeUnmount(() => {
 .wrapper {
   display: flex;
   justify-content: flex-start;
-  padding-top: 17px;
+  padding-top: 10px;
   width: 100%;
   .description {
     width: 750px;

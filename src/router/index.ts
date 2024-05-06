@@ -93,9 +93,9 @@ const router = createRouter({
       path: '/dance/layout', name: 'dance-layout', component: () => import('../views/dance/LayoutView.vue'),
       redirect: '/dance/layout/baseaction',
       children: [
-        { path: 'baseaction', name: 'baseaction', component: () => import('../views/dance/SubBaseAction.vue') },
-        { path: 'hardaction', name: 'hardaction', component: () => import('../views/dance/SubHardAction.vue') },
-        { path: 'groupaction', name: 'groupaction', component: () => import('../views/dance/SubGroupAction.vue') },
+        { path: 'baseaction', name: 'd-baseaction', component: () => import('../views/dance/SubBaseAction.vue') },
+        { path: 'hardaction', name: 'd-hardaction', component: () => import('../views/dance/SubHardAction.vue') },
+        { path: 'groupaction', name: 'd-groupaction', component: () => import('../views/dance/SubGroupAction.vue') },
         { path: 'routine', name: 'routine', component: () => import('../views/dance/SubRoutine.vue') },
       ]
     },

@@ -25,19 +25,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { onMounted } from 'vue'
-import { onBeforeUnmount } from 'vue'
-onMounted(() => {
-  const app = document.querySelector('#app')
-  app.className = 'science-origin'
-})
-
-onBeforeUnmount(() => {
-  const app = document.querySelector('#app')
-  app.className = ''
-})
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .wrapper {
