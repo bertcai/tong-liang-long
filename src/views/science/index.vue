@@ -37,7 +37,7 @@
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const toScienceConcept = () => {
-  router.push('/science/concept')
+  router.push('/science/layout')
 }
 
 const toHistory = () => {

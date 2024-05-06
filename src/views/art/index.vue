@@ -38,7 +38,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const toArtIntroduction = () => {
-  router.push('/art/introduction')
+  router.push('/art/layout')
 }
 
 const toCatalogues = () => {

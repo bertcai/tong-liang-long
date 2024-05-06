@@ -1,5 +1,5 @@
 <template>
-  <div>base action view</div>
+  <div>总装</div>
 </template>
 
 <script setup lang="ts"></script>

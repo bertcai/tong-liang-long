@@ -38,7 +38,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const toDanceBaseAction = () => {
-  router.push('/dance/base-action')
+  router.push('/dance/layout')
 }
 
 const toArt = () => {
