@@ -25,8 +25,8 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:active'])
 
-const clickRouterLink = (index) => {
-  emit('update:active', props.navList[index])
+const clickRouterLink = (index: string | number) => {
+  emit('update:active', props.navList[index as number])
 }
 </script>
 
