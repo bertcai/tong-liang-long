@@ -20,7 +20,14 @@ const router = createRouter({
     {
       path: '/history', name: 'history', component: () => import('../views/history/index.vue'),
     },
-    { path: '/history/origin', name: 'origin', component: () => import('../views/history/OriginView.vue') },
+    {
+      path: '/history/layout', name: 'layout', component: () => import('../views/history/LayoutView.vue'),
+      redirect: '/history/layout/origin',
+      children: [
+        { path: 'origin', name: 'origin', component: () => import('../views/history/SubOrigin.vue') },
+        { path: 'development', name: 'development', component: () => import('../views/history/SubDevelopment.vue') },
+      ]
+    },
     { path: '/science', name: 'science', component: () => import('../views/science/index.vue') },
     { path: '/science/concept', name: 'concept', component: () => import('../views/science/ConceptView.vue') },
     { path: '/catalogues', name: 'catalogues', component: () => import('../views/catalogues/index.vue') },

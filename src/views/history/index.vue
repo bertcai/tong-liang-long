@@ -37,7 +37,7 @@
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const toHistoryOrigin = () => {
-  router.push('/history/origin')
+  router.push('/history/layout')
 }
 
 const toDance = () => {

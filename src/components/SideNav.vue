@@ -3,10 +3,12 @@
     <div
       class="nav-item"
       v-for="(item, index) in navList"
-      :class="active === item.code ? 'active' : ''"
+      :class="active.code === item.code ? 'active' : ''"
       :key="index"
     >
-      <router-link :to="item.link">{{ item.title }}</router-link>
+      <div class="text-wrapper">
+        <router-link @click="clickRouterLink(index)" :to="item.link">{{ item.title }}</router-link>
+      </div>
       <div class="logo">
         <img src="@/assets/img/side-nav-icon.svg" />
       </div>
@@ -15,10 +17,17 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps, defineEmits } from 'vue'
 const props = defineProps<{
-  navList: { title: string; link: string; code: string }[]
-  active: string
+  navList: { title: string; link: string; code: string; showTitleString: string }[]
+  active: { title: string; link: string; code: string; showTitleString: string }
 }>()
+
+const emit = defineEmits(['update:active'])
+
+const clickRouterLink = (index) => {
+  emit('update:active', props.navList[index])
+}
 </script>
 
 <style scoped>
@@ -52,16 +61,32 @@ const props = defineProps<{
     }
     &:hover {
       height: 69px;
-      font-size: 36px;
+      font-size: 32px;
       opacity: 1;
+      .text-wrapper {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        background-image: url('@/assets/img/active-link-bg.png');
+        background-size: 120% 100%;
+        background-position: center;
+      }
       img {
         height: 69px;
       }
     }
     &.active {
-      font-size: 36px;
+      font-size: 32px;
       height: 69px;
       opacity: 1;
+      .text-wrapper {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        background-image: url('@/assets/img/active-link-bg.png');
+        background-size: 120% 135%;
+        background-position: center;
+      }
       img {
         height: 69px;
       }
