@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17848323"></div>
+    <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17845020"></div>
     <div class="description">
       <div class="item" v-for="item in descriptionList" :key="item.text">
         <div class="color" :style="`background: ${item.color};`"></div>
@@ -63,7 +63,6 @@ const descriptionList = ref([
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 10px;
   .description {
     display: flex;
     flex-wrap: wrap;
@@ -95,7 +94,7 @@ const descriptionList = ref([
 .flourish-embed {
   width: 1200px;
   height: 650px;
-  background: #fff;
+  /* background: #fff; */
 }
 </style>
 <style>

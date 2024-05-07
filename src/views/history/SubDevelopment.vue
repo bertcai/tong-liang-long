@@ -60,7 +60,6 @@ onMounted(() => {
 
 <style scoped>
 .wrapper {
-  margin-top: 120px;
   display: flex;
   justify-content: center;
   .img-wrapper {
