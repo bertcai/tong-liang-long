@@ -2,7 +2,7 @@
   <div class="lamp-wrapper">
     <div class="circle">
       <div class="box bg">
-        <div class="title">板凳龙</div>
+        <div class="title">竞技龙</div>
         <div class="pinyin">jìng jì lóng</div>
         <div class="case-in" @click="caseIn">进入</div>
       </div>
