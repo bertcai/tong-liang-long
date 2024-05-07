@@ -78,15 +78,15 @@ function getImageUrl(code: string) {
 const hoverLamp = async (code: string) => {
   const url = getImageUrl(code)
   console.log(url)
-  mask.value.style.background = `url(${url}) no-repeat`
-  mask.value.style.backgroundSize = 'cover'
+  mask.value!.style.background = `url(${url}) no-repeat`
+  mask.value!.style.backgroundSize = 'cover'
   console.log(code)
   app.className = ''
 }
 
 const leaveLamp = (code: string) => {
-  mask.value.style.background = ''
-  mask.value.style.backgroundSize = ''
+  mask.value!.style.background = ''
+  mask.value!.style.backgroundSize = ''
   app.className = `science-region-${active.value}`
   console.log(code)
 }
