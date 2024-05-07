@@ -102,10 +102,11 @@ const toArt = () => {
           position: relative;
           img {
             max-width: none;
-            position: absolute;
+            position: fixed;
+            top: 147px;
             left: 50%;
             translate: -50%;
-            /* 每秒缩小10% */
+            /* 每2秒缩小10% */
             animation: zoom-decrise 6s infinite;
           }
         }

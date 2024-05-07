@@ -102,11 +102,11 @@ const toDance = () => {
           position: relative;
           img {
             max-width: none;
-            position: absolute;
+            position: fixed;
+            top: 229px;
             left: 50%;
-            top: 82px;
             translate: -50%;
-            /* 每秒缩小10% */
+            /* 每2秒缩小10% */
             animation: zoom-decrise 6s infinite;
           }
         }

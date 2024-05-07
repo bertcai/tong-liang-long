@@ -102,11 +102,11 @@ const toHistory = () => {
           position: relative;
           img {
             max-width: none;
-            position: absolute;
+            position: fixed;
+            top: 253px;
             left: 50%;
-            top: 106px;
             translate: -50%;
-            /* 每秒缩小10% */
+            /* 每2秒缩小10% */
             animation: zoom-decrise 6s infinite;
           }
         }

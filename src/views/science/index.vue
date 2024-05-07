@@ -101,11 +101,11 @@ const toCatalogues = () => {
           position: relative;
           img {
             max-width: none;
-            position: absolute;
+            position: fixed;
+            top: 254px;
             left: 50%;
             translate: -50%;
-            top: 107px;
-            /* 每秒缩小10% */
+            /* 每2秒缩小10% */
             animation: zoom-decrise 6s infinite;
           }
         }
