@@ -20,6 +20,6 @@ const caseIn = () => {
 .box.bg {
   background: url('@/assets/img/catalogues/dragonlamp/zhubanglong.svg') no-repeat;
   width: 746px;
-  width: 746px;
+  height: 746px;
 }
 </style>
