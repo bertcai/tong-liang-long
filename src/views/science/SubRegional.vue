@@ -62,7 +62,7 @@ const lampTypes = ref([
   { code: 'zhukennangua', name: '猪啃南瓜' },
   { code: 'yuyuelongmen', name: '鱼跃龙门' },
   { code: 'niqiuchitangyuan', name: '泥鳅吃汤圆' },
-  { code: 'santiaoshen', name: '三条鰺' },
+  { code: 'santiaoshen', name: '三条鲹' },
   { code: 'shibaxueshi', name: '十八学士' },
   { code: 'bengkejing', name: '蚌壳精' },
   { code: 'liangshi', name: '亮狮' },
@@ -261,7 +261,7 @@ onBeforeUnmount(() => {
         left: 1392px;
       }
       &#santiaoshen {
-        /* 三条鰺 */
+        /* 三条鲹 */
         position: absolute;
         top: 439px;
         left: 1361px;

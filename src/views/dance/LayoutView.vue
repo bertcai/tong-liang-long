@@ -72,6 +72,7 @@ onMounted(() => {
 .wrapper {
   display: flex;
   height: 100%;
+  position: relative;
   .left {
     display: flex;
     flex-direction: column;
@@ -104,6 +105,9 @@ onMounted(() => {
     }
   }
   .right {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
 </style>

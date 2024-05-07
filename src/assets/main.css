@@ -8,3 +8,73 @@ body {
 #app {
   height: 100vh;
 }
+
+
+
+/* lamp style */
+
+.lamp-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .circle {
+    background: url('@/assets/img/catalogues/lamp-bg.gif') no-repeat;
+    background-size: 111%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 900px;
+    position: relative;
+    z-index: 2;
+    .box {
+      width: 742px;
+      height: 742px;
+      /* border-radius: 50%;
+      border: 1px solid rgba(255, 241, 249, 0.53); */
+      position: relative;
+      background: url('@/assets/img/catalogues/colorlamp/paideng.svg') no-repeat;
+      background-size: 100%;
+      background-position: center;
+      z-index: 1;
+      .title {
+        margin-top: 329px;
+        color: #fff1f9;
+        text-align: center;
+        font-family: FZMingShangTiS-R-GB;
+        font-size: 68px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 111.25%; /* 75.65px */
+        /* height: 50%; */
+      }
+      .pinyin {
+        margin-top: 26px;
+        color: #fff1f9;
+        text-align: center;
+        font-family: Inter;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .case-in {
+        margin-top: 57px;
+        color: #fff;
+        font-family: Inter;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+        cursor: pointer;
+        animation: blink 2s infinite;
+        position: relative;
+        z-index: 3;
+      }
+    }
+  }
+}
