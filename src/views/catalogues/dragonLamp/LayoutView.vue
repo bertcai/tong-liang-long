@@ -130,7 +130,7 @@ watch(route, () => {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding-left: 180px;
+      padding-left: 182px;
       width: 100%;
       height: 100%;
       .title {
@@ -148,6 +148,7 @@ watch(route, () => {
       }
     }
     .content {
+      margin-top: 36px;
       display: flex;
       justify-content: center;
       height: 100%;

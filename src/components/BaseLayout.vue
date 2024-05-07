@@ -4,15 +4,19 @@
       <div class="nav-item" :class="active === 'history' ? 'active' : ''">
         <router-link to="/history">灯史</router-link>
       </div>
+      <div class="split"></div>
       <div class="nav-item" :class="active === 'science' ? 'active' : ''">
         <router-link to="/science">灯学</router-link>
       </div>
+      <div class="split"></div>
       <div class="nav-item" :class="active === 'catalogues' ? 'active' : ''">
         <router-link to="/catalogues">灯录</router-link>
       </div>
+      <div class="split"></div>
       <div class="nav-item" :class="active === 'art' ? 'active' : ''">
         <router-link to="/art">灯艺</router-link>
       </div>
+      <div class="split"></div>
       <div class="nav-item" :class="active === 'dance' ? 'active' : ''">
         <router-link to="/dance">灯舞</router-link>
       </div>
@@ -43,35 +47,48 @@ const props = defineProps<{
   .nav {
     display: flex;
     justify-content: end;
+    align-items: center;
     padding: 0 20px;
+    z-index: 100;
+    .split {
+      width: 2px;
+      height: 22px;
+      background-color: #fff;
+      margin: 0 50px;
+    }
     .nav-item {
       font-size: 16px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 69px;
-      width: 109px;
+      height: 35px;
+      width: 85px;
       font-size: 36px;
       font-style: normal;
       font-weight: 400;
       text-align: justify;
       font-family: FZMingShangTiS-R-GB;
+      cursor: pointer;
       &.active {
         background-image: url('@/assets/img/active-link-bg.svg');
+        background-position: center;
+        background-size: 100%;
       }
       &:hover {
         background-image: url('@/assets/img/active-link-bg.svg');
+        background-position: center;
+        background-size: 100%;
       }
     }
   }
   .logo {
     position: absolute;
-    top: 80px;
-    left: 90px;
+    top: 79px;
+    left: 89px;
   }
   .content {
-    margin-top: 42px;
+    margin-top: 30px;
     height: 100%;
   }
 }

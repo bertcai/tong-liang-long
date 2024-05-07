@@ -111,7 +111,7 @@ onMounted(() => {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding-left: 180px;
+      padding-left: 182px;
       width: 100%;
       .title {
         display: flex;
@@ -128,6 +128,7 @@ onMounted(() => {
       }
     }
     .content {
+      margin-top: 36px;
       height: 100%;
       display: flex;
       justify-content: center;
