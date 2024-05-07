@@ -33,12 +33,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref, type Ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const active = ref('lamp')
-const mask = ref(null)
+const mask = ref() as Ref<HTMLElement>
 const app = document.querySelector('#app') as Element
 const list = [
   { code: 'lamp', title: '全国龙灯' },
@@ -50,7 +50,7 @@ const lampTypes = ref([
   { code: 'huolong', name: '火龙' },
   { code: 'darulong', name: '大蠕龙' },
   { code: 'daocaolong', name: '稻草龙' },
-  { code: 'huangjinlong', name: '黄荆龙' },
+  { code: 'huangjinglong', name: '黄荆龙' },
   { code: 'bandenglong', name: '板凳龙' },
   { code: 'xiaocailong', name: '小彩龙' },
   { code: 'hehualong', name: '荷花龙' },
@@ -71,7 +71,7 @@ const lampTypes = ref([
   { code: 'yantatiming', name: '雁塔题名' }
 ])
 
-function getImageUrl(code) {
+function getImageUrl(code: string) {
   return new URL('../../assets/img/science/map/' + code + '.png', import.meta.url).href
 }
 
@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
         top: 426px;
         left: 346px;
       }
-      &#huangjinlong {
+      &#huangjinglong {
         /* 黄荆龙 */
         position: absolute;
         top: 567px;
