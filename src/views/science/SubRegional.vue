@@ -11,7 +11,7 @@
         {{ item.title }}
       </div>
     </div>
-    <div class="tongliang-mask" ref="mask">
+    <div v-if="active === 'tongliang'" class="tongliang-mask" ref="mask">
       <div
         v-for="item in lampTypes"
         :key="item.code"
@@ -116,6 +116,7 @@ onBeforeUnmount(() => {
   .region-changer {
     margin-left: 90px;
     margin-top: 270px;
+    z-index: 100;
     .item {
       width: 127px;
       height: 43px;
