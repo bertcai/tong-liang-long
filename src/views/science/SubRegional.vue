@@ -11,6 +11,24 @@
         {{ item.title }}
       </div>
     </div>
+    <div class="tongliang-mask" ref="mask">
+      <div
+        v-for="item in lampTypes"
+        :key="item.code"
+        :class="['lamp-type-box', `${item.code.endsWith('long') ? 'align-left' : 'align-right'}`]"
+        :id="item.code"
+        @mouseover="hoverLamp(item.code)"
+        @mouseleave="leaveLamp(item.code)"
+      >
+        <div class="circle"></div>
+        <div class="name">
+          {{ item.name }}
+        </div>
+      </div>
+      <div class="tip">
+        <img src="@/assets/img/science/map/tip.svg" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -20,12 +38,58 @@ import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const active = ref('lamp')
+const mask = ref(null)
 const app = document.querySelector('#app') as Element
 const list = [
   { code: 'lamp', title: '全国龙灯' },
   { code: 'dance', title: '全国龙舞' },
   { code: 'tongliang', title: '铜梁地区' }
 ]
+
+const lampTypes = ref([
+  { code: 'huolong', name: '火龙' },
+  { code: 'darulong', name: '大蠕龙' },
+  { code: 'daocaolong', name: '稻草龙' },
+  { code: 'huangjinlong', name: '黄荆龙' },
+  { code: 'bandenglong', name: '板凳龙' },
+  { code: 'xiaocailong', name: '小彩龙' },
+  { code: 'hehualong', name: '荷花龙' },
+  { code: 'zhubanglong', name: '竹梆龙' },
+  { code: 'sunkelong', name: '笋壳龙' },
+  { code: 'zhenglong', name: '正龙' },
+  { code: 'nanguapeng', name: '南瓜棚' },
+  { code: 'kaishanhu', name: '开山虎' },
+  { code: 'zhukennangua', name: '猪啃南瓜' },
+  { code: 'yuyuelongmen', name: '鱼跃龙门' },
+  { code: 'niqiuchitangyuan', name: '泥鳅吃汤圆' },
+  { code: 'santiaoshen', name: '三条鰺' },
+  { code: 'shibaxueshi', name: '十八学士' },
+  { code: 'bengkejing', name: '蚌壳精' },
+  { code: 'liangshi', name: '亮狮' },
+  { code: 'xiniuwangyue', name: '犀牛望月' },
+  { code: 'gaotailongshi', name: '高台龙狮' },
+  { code: 'yantatiming', name: '雁塔题名' }
+])
+
+function getImageUrl(code) {
+  return new URL('../../assets/img/science/map/' + code + '.png', import.meta.url).href
+}
+
+const hoverLamp = async (code: string) => {
+  const url = getImageUrl(code)
+  console.log(url)
+  mask.value.style.background = `url(${url}) no-repeat`
+  mask.value.style.backgroundSize = 'cover'
+  console.log(code)
+  app.className = ''
+}
+
+const leaveLamp = (code: string) => {
+  mask.value.style.background = ''
+  mask.value.style.backgroundSize = ''
+  app.className = `science-region-${active.value}`
+  console.log(code)
+}
 
 const clickRegion = (code: string) => {
   active.value = code
@@ -69,6 +133,173 @@ onBeforeUnmount(() => {
       &.active {
         background: url('@/assets/img/science/region-link-bg.svg');
         opacity: 1;
+      }
+    }
+  }
+  .tongliang-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    .tip {
+      position: absolute;
+      top: 780px;
+      left: 1647px;
+    }
+    .lamp-type-box {
+      display: flex;
+      align-items: flex-start;
+      &.align-left {
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+      }
+      &.align-right {
+        justify-content: flex-start;
+      }
+      .name {
+        width: 15px;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        opacity: 0;
+      }
+      .circle {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+      }
+      &#huolong {
+        /* 火龙 */
+        position: absolute;
+        top: 292px;
+        left: 359px;
+      }
+      &#darulong {
+        /* 大蠕龙 */
+        position: absolute;
+        top: 336px;
+        left: 528px;
+      }
+      &#daocaolong {
+        /* 稻草龙 */
+        position: absolute;
+        top: 426px;
+        left: 346px;
+      }
+      &#huangjinlong {
+        /* 黄荆龙 */
+        position: absolute;
+        top: 567px;
+        left: 353px;
+      }
+      &#bandenglong {
+        /* 板凳龙 */
+        position: absolute;
+        top: 640px;
+        left: 505px;
+      }
+      &#xiaocailong {
+        /* 小彩龙 */
+        position: absolute;
+        top: 735px;
+        left: 414px;
+      }
+      &#hehualong {
+        /* 荷花龙 */
+        position: absolute;
+        top: 830px;
+        left: 328px;
+      }
+      &#zhubanglong {
+        /* 竹梆龙 */
+        position: absolute;
+        top: 893px;
+        left: 465px;
+      }
+      &#sunkelong {
+        /* 笋壳龙 */
+        position: absolute;
+        top: 891.67px;
+        left: 613px;
+      }
+      &#zhenglong {
+        /* 正龙 */
+        position: absolute;
+        top: 938px;
+        left: 739.48px;
+      }
+      &#nanguapeng {
+        /* 南瓜棚 */
+        position: absolute;
+        top: 169.4px;
+        left: 850.99px;
+      }
+      &#kaishanhu {
+        /* 开山虎 */
+        position: absolute;
+        top: 239.61px;
+        left: 994px;
+      }
+      &#zhukennangua {
+        /* 猪啃南瓜 */
+        position: absolute;
+        top: 174px;
+        left: 1130px;
+      }
+      &#yuyuelongmen {
+        /* 鱼跃龙门 */
+        position: absolute;
+        top: 261px;
+        left: 1246px;
+      }
+      &#niqiuchitangyuan {
+        /* 泥鳅吃汤圆 */
+        position: absolute;
+        top: 284px;
+        left: 1392px;
+      }
+      &#santiaoshen {
+        /* 三条鰺 */
+        position: absolute;
+        top: 439px;
+        left: 1361px;
+      }
+      &#shibaxueshi {
+        /* 十八学士 */
+        position: absolute;
+        top: 562px;
+        left: 1458px;
+      }
+      &#bengkejing {
+        /* 蚌壳精 */
+        position: absolute;
+        top: 675px;
+        left: 1346px;
+      }
+      &#liangshi {
+        /* 亮狮 */
+        position: absolute;
+        top: 803.99px;
+        left: 1285px;
+      }
+      &#xiniuwangyue {
+        /* 犀牛望月 */
+        position: absolute;
+        top: 802px;
+        left: 1429px;
+      }
+      &#gaotailongshi {
+        /* 高台龙狮 */
+        position: absolute;
+        top: 904.49px;
+        left: 1092.67px;
+      }
+      &#yantatiming {
+        /* 雁塔题名 */
+        position: absolute;
+        top: 909px;
+        left: 1228px;
       }
     }
   }

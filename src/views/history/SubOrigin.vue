@@ -23,7 +23,6 @@
 .text {
   height: 376px;
   margin-top: 139px;
-  padding-left: 180px;
   .top {
     display: flex;
     justify-content: end;

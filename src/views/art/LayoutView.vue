@@ -83,6 +83,7 @@ onMounted(() => {
 <style scoped>
 .wrapper {
   display: flex;
+  height: 100%;
   .left {
     display: flex;
     flex-direction: column;
@@ -111,6 +112,7 @@ onMounted(() => {
     .content {
       display: flex;
       justify-content: center;
+      height: 100%;
     }
   }
   .right {

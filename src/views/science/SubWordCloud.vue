@@ -30,7 +30,7 @@
 <style scoped>
 .wrapper {
   margin-top: 40px;
-  margin-right: 100px;
+  margin-right: 337px;
   display: flex;
   justify-content: flex-end;
   width: 100%;

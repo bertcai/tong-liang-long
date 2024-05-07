@@ -61,10 +61,10 @@ onMounted(() => {
 <style scoped>
 .wrapper {
   margin-top: 120px;
-  position: relative;
-  width: 100%;
+  display: flex;
+  justify-content: center;
   .img-wrapper {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 1590px;
