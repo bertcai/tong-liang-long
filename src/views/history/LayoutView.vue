@@ -34,16 +34,16 @@ const route = useRoute()
 
 const navList = [
   {
-    title: '铜梁龙的起源',
+    title: '起源',
     link: '/history/layout/origin',
     code: 'origin',
-    showTitleString: '起源'
+    showTitleString: '铜梁龙的起源'
   },
   {
-    title: '铜梁龙的发展',
+    title: '发展',
     link: '/history/layout/development',
     code: 'development',
-    showTitleString: '发展'
+    showTitleString: '铜梁龙的发展'
   }
 ]
 

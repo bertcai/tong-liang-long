@@ -24,18 +24,17 @@ onBeforeUnmount(() => {
 <style scoped>
 .wrapper {
   display: flex;
-  justify-content: flex-start;
-  padding-top: 10px;
+  justify-content: center;
   width: 100%;
   .description {
     width: 750px;
-    margin-left: 246px;
     color: #fff1f9;
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-align: center;
   }
 }
 </style>
