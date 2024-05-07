@@ -60,20 +60,7 @@ const clickRouterLink = (index: string | number) => {
       }
     }
     &:hover {
-      height: 69px;
-      font-size: 32px;
       opacity: 1;
-      .text-wrapper {
-        height: 40px;
-        display: flex;
-        align-items: center;
-        background-image: url('@/assets/img/active-link-bg.png');
-        background-size: 120% 100%;
-        background-position: center;
-      }
-      img {
-        height: 69px;
-      }
     }
     &.active {
       font-size: 32px;
