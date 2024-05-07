@@ -1,9 +1,9 @@
 <template>
   <div class="lamp-wrapper">
     <div class="circle">
-      <div class="box">
+      <div class="box bg">
         <div class="title">三条鲹</div>
-        <div class="pinyin">pái dēng</div>
+        <div class="pinyin">sān tiáo shēn</div>
         <div class="case-in" @click="caseIn">进入</div>
       </div>
     </div>
@@ -17,7 +17,7 @@ const caseIn = () => {
 </script>
 
 <style scoped>
-.box {
-  background: url('@/assets/img/catalogues/colorlamp/paideng.svg') no-repeat;
+.box.bg {
+  background: url('@/assets/img/catalogues/colorlamp/santiaoshen.svg') no-repeat;
 }
 </style>

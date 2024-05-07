@@ -7,15 +7,14 @@
       <div class="line4"></div>
       <div class="line5"></div>
       <div class="row-center">
-        <router-link class="link" to="/catalogues/dragonlamp/layout/darulong">大蠕龙</router-link>
-
         <router-link class="link" to="/catalogues/dragonlamp/layout/jingjilong">竞技龙</router-link>
+        <router-link class="link" to="/catalogues/dragonlamp/layout/darulong">大蠕龙</router-link>
       </div>
       <div class="row-center2">
+        <router-link class="link" to="/catalogues/dragonlamp/layout/daocaolong">稻草龙</router-link>
         <router-link class="link" to="/catalogues/dragonlamp/layout/bandenglong"
           >板凳龙</router-link
         >
-        <router-link class="link" to="/catalogues/dragonlamp/layout/daocaolong">稻草龙</router-link>
       </div>
       <div class="row-space-between">
         <router-link class="link" to="/catalogues/dragonlamp/layout/hehualong">荷花龙</router-link>

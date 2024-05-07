@@ -1,9 +1,9 @@
 <template>
   <div class="lamp-wrapper">
     <div class="circle">
-      <div class="box">
+      <div class="box bg">
         <div class="title">鲤鱼跳龙门</div>
-        <div class="pinyin">pái dēng</div>
+        <div class="pinyin">lǐ yú tiào lóng mén</div>
         <div class="case-in" @click="caseIn">进入</div>
       </div>
     </div>
@@ -12,12 +12,12 @@
 
 <script setup lang="ts">
 const caseIn = () => {
-  console.log('caseIn paideng')
+  console.log('caseIn lǐ yú tiào lóng mén')
 }
 </script>
 
 <style scoped>
-.box {
-  background: url('@/assets/img/catalogues/colorlamp/paideng.svg') no-repeat;
+.box.bg {
+  background: url('@/assets/img/catalogues/colorlamp/liyutiaolongmen.svg') no-repeat;
 }
 </style>
