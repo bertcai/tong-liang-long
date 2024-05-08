@@ -69,7 +69,7 @@ const router = useRouter()
 const route = useRoute()
 const active = ref('lamp')
 const mask = ref() as Ref<HTMLElement>
-const app = document.querySelector('#app') as Element
+const app = document.querySelector('#app') as any
 const list = [
   { code: 'lamp', title: '全国龙灯', src: region1S },
   { code: 'dance', title: '全国龙舞', src: region2S },
