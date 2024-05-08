@@ -22,7 +22,7 @@
 <style scoped>
 .text {
   height: 376px;
-  margin-top: 139px;
+  margin-top: 210px;
   .top {
     display: flex;
     justify-content: end;

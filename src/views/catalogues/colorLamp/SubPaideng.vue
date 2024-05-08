@@ -2,7 +2,7 @@
   <div class="lamp-wrapper">
     <div class="circle">
       <div class="box">
-        <div class="title">排灯</div>
+        <div class="title">牌灯</div>
         <div class="pinyin">pái dēng</div>
         <div class="case-in" @click="caseIn">进入</div>
       </div>

@@ -35,76 +35,105 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref, type Ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import region1 from '@/assets/img/science/region1.gif'
+import region2 from '@/assets/img/science/region2.gif'
+import region3 from '@/assets/img/science/region3.gif'
+import huolong from '@/assets/img/science/map/huolong.png'
+import darulong from '@/assets/img/science/map/darulong.png'
+import daocaolong from '@/assets/img/science/map/daocaolong.png'
+import huangjinglong from '@/assets/img/science/map/huangjinglong.png'
+import bandenglong from '@/assets/img/science/map/bandenglong.png'
+import xiaocailong from '@/assets/img/science/map/xiaocailong.png'
+import hehualong from '@/assets/img/science/map/hehualong.png'
+import zhubanglong from '@/assets/img/science/map/zhubanglong.png'
+import sunkelong from '@/assets/img/science/map/sunkelong.png'
+import zhenglong from '@/assets/img/science/map/zhenglong.png'
+import nanguapeng from '@/assets/img/science/map/nanguapeng.png'
+import kaishanhu from '@/assets/img/science/map/kaishanhu.png'
+import zhukennangua from '@/assets/img/science/map/zhukennangua.png'
+import yuyuelongmen from '@/assets/img/science/map/yuyuelongmen.png'
+import niqiuchitangyuan from '@/assets/img/science/map/niqiuchitangyuan.png'
+import santiaoshen from '@/assets/img/science/map/santiaoshen.png'
+import shibaxueshi from '@/assets/img/science/map/shibaxueshi.png'
+import bengkejing from '@/assets/img/science/map/bengkejing.png'
+import liangshi from '@/assets/img/science/map/liangshi.png'
+import xiniuwangyue from '@/assets/img/science/map/xiniuwangyue.png'
+import gaotailongshi from '@/assets/img/science/map/gaotailongshi.png'
+import yantatiming from '@/assets/img/science/map/yantatiming.png'
+
+const random = ref(0)
+const region1S = ref(region1 + '?' + random.value)
+const region2S = ref(region2 + '?' + random.value)
+const region3S = ref(region3 + '?' + random.value)
 const router = useRouter()
 const route = useRoute()
 const active = ref('lamp')
 const mask = ref() as Ref<HTMLElement>
 const app = document.querySelector('#app') as Element
 const list = [
-  { code: 'lamp', title: '全国龙灯' },
-  { code: 'dance', title: '全国龙舞' },
-  { code: 'tongliang', title: '铜梁地区' }
+  { code: 'lamp', title: '全国龙灯', src: region1S },
+  { code: 'dance', title: '全国龙舞', src: region2S },
+  { code: 'tongliang', title: '铜梁地区', src: region3S }
 ]
 
 const lampTypes = ref([
-  { code: 'huolong', name: '火龙' },
-  { code: 'darulong', name: '大蠕龙' },
-  { code: 'daocaolong', name: '稻草龙' },
-  { code: 'huangjinglong', name: '黄荆龙' },
-  { code: 'bandenglong', name: '板凳龙' },
-  { code: 'xiaocailong', name: '小彩龙' },
-  { code: 'hehualong', name: '荷花龙' },
-  { code: 'zhubanglong', name: '竹梆龙' },
-  { code: 'sunkelong', name: '笋壳龙' },
-  { code: 'zhenglong', name: '正龙' },
-  { code: 'nanguapeng', name: '南瓜棚' },
-  { code: 'kaishanhu', name: '开山虎' },
-  { code: 'zhukennangua', name: '猪啃南瓜' },
-  { code: 'yuyuelongmen', name: '鱼跃龙门' },
-  { code: 'niqiuchitangyuan', name: '泥鳅吃汤圆' },
-  { code: 'santiaoshen', name: '三条鲹' },
-  { code: 'shibaxueshi', name: '十八学士' },
-  { code: 'bengkejing', name: '蚌壳精' },
-  { code: 'liangshi', name: '亮狮' },
-  { code: 'xiniuwangyue', name: '犀牛望月' },
-  { code: 'gaotailongshi', name: '高台龙狮' },
-  { code: 'yantatiming', name: '雁塔题名' }
+  { code: 'huolong', name: '火龙', src: huolong },
+  { code: 'darulong', name: '大蠕龙', src: darulong },
+  { code: 'daocaolong', name: '稻草龙', src: daocaolong },
+  { code: 'huangjinglong', name: '黄荆龙', src: huangjinglong },
+  { code: 'bandenglong', name: '板凳龙', src: bandenglong },
+  { code: 'xiaocailong', name: '小彩龙', src: xiaocailong },
+  { code: 'hehualong', name: '荷花龙', src: hehualong },
+  { code: 'zhubanglong', name: '竹梆龙', src: zhubanglong },
+  { code: 'sunkelong', name: '笋壳龙', src: sunkelong },
+  { code: 'zhenglong', name: '正龙', src: zhenglong },
+  { code: 'nanguapeng', name: '南瓜棚', src: nanguapeng },
+  { code: 'kaishanhu', name: '开山虎', src: kaishanhu },
+  { code: 'zhukennangua', name: '猪啃南瓜', src: zhukennangua },
+  { code: 'yuyuelongmen', name: '鱼跃龙门', src: yuyuelongmen },
+  { code: 'niqiuchitangyuan', name: '泥鳅吃汤圆', src: niqiuchitangyuan },
+  { code: 'santiaoshen', name: '三条鲹', src: santiaoshen },
+  { code: 'shibaxueshi', name: '十八学士', src: shibaxueshi },
+  { code: 'bengkejing', name: '蚌壳精', src: bengkejing },
+  { code: 'liangshi', name: '亮狮', src: liangshi },
+  { code: 'xiniuwangyue', name: '犀牛望月', src: xiniuwangyue },
+  { code: 'gaotailongshi', name: '高台龙狮', src: gaotailongshi },
+  { code: 'yantatiming', name: '雁塔题名', src: yantatiming }
 ])
 
-function getImageUrl(code: string) {
-  return new URL('../../assets/img/science/map/' + code + '.png', import.meta.url).href
-}
+const activeUrl = ref('')
 
 const hoverLamp = async (code: string) => {
-  const url = getImageUrl(code)
-  console.log(url)
+  console.log(code)
+  const url = lampTypes.value!.find((item) => item.code === code)?.src || ''
   mask.value!.style.background = `url(${url}) no-repeat`
   mask.value!.style.backgroundSize = 'cover'
-  console.log(code)
-  app.className = ''
+  app.style.background = ''
 }
 
 const leaveLamp = (code: string) => {
   mask.value!.style.background = ''
   mask.value!.style.backgroundSize = ''
-  app.className = `science-region-${active.value}`
+  app.style.background = `url(${activeUrl.value}) no-repeat`
   console.log(code)
 }
 
 const clickRegion = (code: string) => {
   active.value = code
   router.push({ query: { region: code } })
-  app.className = `science-region-${active.value}`
+  activeUrl.value =
+    list.find((item) => item.code === active.value)?.src.value + '?' + Math.random() || ''
+  app.style.background = `url(${activeUrl.value}) no-repeat`
 }
 onMounted(() => {
   const currentRegion = route.query.region as string
   active.value = currentRegion || 'lamp'
-  app.className = `science-region-${active.value}`
+  activeUrl.value =
+    list.find((item) => item.code === active.value)?.src.value + '?' + Math.random() || ''
+  app.style.background = `url(${activeUrl.value}) no-repeat`
 })
 
-onBeforeUnmount(() => {
-  app.className = ''
-})
+onBeforeUnmount(() => {})
 </script>
 
 <style scoped>

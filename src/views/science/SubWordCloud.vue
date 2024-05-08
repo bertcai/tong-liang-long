@@ -2,22 +2,22 @@
   <div class="wrapper">
     <div class="content">
       <div class="ancient animate__animated animate__fadeInLeft">是祭祀祖先的方式</div>
-      <div class="sport animate__animated animate__fadeInLeft animate__delay-1s">
+      <div class="sport animate__animated animate__fadeInLeft animate__delay-500ms">
         是民族传统的体育竞技
       </div>
-      <div class="culture animate__animated animate__fadeInLeft animate__delay-2s">
+      <div class="culture animate__animated animate__fadeInLeft animate__delay-1s">
         是一种文化传承
       </div>
-      <div class="belief animate__animated animate__fadeInLeft animate__delay-3s">
+      <div class="belief animate__animated animate__fadeInLeft animate__delay-1500ms">
         是自古以来对龙的信仰
       </div>
-      <div class="hope animate__animated animate__fadeInLeft animate__delay-4s">
+      <div class="hope animate__animated animate__fadeInLeft animate__delay-2s">
         是对美好生活的期盼
       </div>
-      <div class="symbol animate__animated animate__fadeInLeft animate__delay-5s">
+      <div class="symbol animate__animated animate__fadeInLeft animate__delay-2500ms">
         是团圆和喜庆的象征
       </div>
-      <div class="program animate__animated animate__fadeInLeft animate__delay-6s">
+      <div class="program animate__animated animate__fadeInLeft animate__delay-3s">
         是节气庆典的助兴节目
       </div>
       <img src="@/assets/img/science/wordcloud.svg" />
@@ -99,7 +99,15 @@
     right: 447px;
   }
 }
-.animate__delay-6s {
-  animation-delay: 6s;
+.animate__delay-500ms {
+  animation-delay: 0.5s;
+}
+
+.animate__delay-1500ms {
+  animation-delay: 1.5s;
+}
+
+.animate__delay-2500ms {
+  animation-delay: 2.5s;
 }
 </style>
