@@ -39,7 +39,7 @@ const router = createRouter({
         { path: 'regional', name: 'regional', component: () => import('../views/science/SubRegional.vue') },
         { path: 'activity', name: 'activity', component: () => import('../views/science/SubActivity.vue') },
         { path: 'baseaction', name: 'baseaction', component: () => import('../views/science/SubInheritor.vue') },
-        { path: 'hardaction', name: 'hardaction', component: () => import('../views/science/SubHardAction.vue') },
+        { path: 'hardaction', name: 'hardaction', component: () => import('../views/science/SubFolklore.vue') },
         { path: 'groupaction', name: 'groupaction', component: () => import('../views/science/SubGroupAction.vue') },
         { path: 'image', name: 'image', component: () => import('../views/science/SubImage.vue') },
       ]

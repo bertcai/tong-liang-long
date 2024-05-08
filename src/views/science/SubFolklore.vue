@@ -6,12 +6,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import inheritorGif from '@/assets/img/science/inheritor.gif'
+import folkLoreGif from '@/assets/img/science/folklore.gif'
 
-const fullImgUrl = ref(inheritorGif)
+const fullImgUrl = ref(folkLoreGif)
 
 onMounted(() => {
-  fullImgUrl.value = inheritorGif
+  fullImgUrl.value = folkLoreGif
 })
 </script>
 
