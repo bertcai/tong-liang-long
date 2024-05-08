@@ -15,7 +15,7 @@
           <router-view></router-view>
         </div>
       </div>
-      <div class="right" v-if="!isIndex">
+      <div class="right" v-if="!isIndex && !isDetail">
         <div class="side-nav">
           <SideNav :navList="navList" v-model:active="active" />
         </div>
@@ -85,6 +85,7 @@ const navList = [
 
 const active = ref(navList[0])
 const isIndex = ref(false)
+const isDetail = ref(false)
 
 onMounted(() => {
   const link = route.fullPath
@@ -102,6 +103,11 @@ watch(route, () => {
     isIndex.value = true
   } else {
     isIndex.value = false
+  }
+  if (link.split('/').length > 5) {
+    isDetail.value = true
+  } else {
+    isDetail.value = false
   }
 })
 </script>
