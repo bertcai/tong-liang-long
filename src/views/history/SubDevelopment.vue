@@ -64,8 +64,7 @@ onMounted(() => {
   justify-content: center;
   .img-wrapper {
     position: relative;
-    top: 0;
-    left: 0;
+    margin-top: 99px;
     width: 1590px;
     height: 610px;
     .description-wrapper {
