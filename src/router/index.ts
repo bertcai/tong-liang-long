@@ -38,9 +38,8 @@ const router = createRouter({
         { path: 'wordcloud', name: 'wordcloud', component: () => import('../views/science/SubWordCloud.vue') },
         { path: 'regional', name: 'regional', component: () => import('../views/science/SubRegional.vue') },
         { path: 'activity', name: 'activity', component: () => import('../views/science/SubActivity.vue') },
-        { path: 'baseaction', name: 'baseaction', component: () => import('../views/science/SubInheritor.vue') },
-        { path: 'hardaction', name: 'hardaction', component: () => import('../views/science/SubFolklore.vue') },
-        { path: 'groupaction', name: 'groupaction', component: () => import('../views/science/SubGroupAction.vue') },
+        { path: 'inheritor', name: 'inheritor', component: () => import('../views/science/SubInheritor.vue') },
+        { path: 'folklore', name: 'folklore', component: () => import('../views/science/SubFolklore.vue') },
         { path: 'image', name: 'image', component: () => import('../views/science/SubImage.vue') },
       ]
     },

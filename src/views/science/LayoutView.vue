@@ -79,14 +79,14 @@ const navList = [
   },
   {
     title: '传承人',
-    link: '/science/layout/baseaction',
-    code: 'baseaction',
+    link: '/science/layout/inheritor',
+    code: 'inheritor',
     showTitleString: '传承人'
   },
   {
     title: '民俗活动',
-    link: '/science/layout/hardaction',
-    code: 'hardaction',
+    link: '/science/layout/folklore',
+    code: 'folklore',
     showTitleString: '民俗活动'
   }
 ]
