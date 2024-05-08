@@ -22,13 +22,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 900px;
-    height: 900px;
+    width: 850px;
+    height: 850px;
     position: relative;
     &::before {
       content: '';
       background: url('@/assets/img/catalogues/lamp-bg.gif') no-repeat;
-      background-size: 111%;
+      background-size: 118%;
       background-position: center;
       position: absolute;
       pointer-events: none;
