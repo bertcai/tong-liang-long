@@ -133,7 +133,9 @@ onMounted(() => {
   app.style.background = `url(${activeUrl.value}) no-repeat`
 })
 
-onBeforeUnmount(() => {})
+onBeforeUnmount(() => {
+  app.style.background = ''
+})
 </script>
 
 <style scoped>
