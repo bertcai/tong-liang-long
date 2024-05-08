@@ -11,8 +11,11 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const caseIn = () => {
   console.log('caseIn ní qiū chī tāng yuán')
+  router.push('/catalogues/colorlamp/layout/niqiuchitangyuan/detail')
 }
 </script>
 
