@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.8",
     "@vueuse/core": "^10.9.0",
     "animate.css": "^4.1.1",
     "touchfree": "https://github.com/bertcai/TouchFreeWebTooling/tarball/develop",
