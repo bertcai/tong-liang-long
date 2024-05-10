@@ -4,13 +4,13 @@
     <img v-show="showActivity" class="full-screen" :src="activityPng" />
     <img v-show="showHonour" class="full-screen" :src="honourPng" />
     <div class="changer">
-      <div class="item" @mouseover="showA" @mouseleave="leave">
+      <div class="item" @mouseover="showH" @mouseleave="leave">
         <div class="color">
           <img src="@/assets/img/science/honour-btn.svg" />
         </div>
         <div class="text">赛事荣誉</div>
       </div>
-      <div class="item" @mouseover="showH" @mouseleave="leave">
+      <div class="item" @mouseover="showA" @mouseleave="leave">
         <div class="color">
           <img src="@/assets/img/science/activity-btn.svg" />
         </div>
