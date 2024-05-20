@@ -96,9 +96,7 @@ const descriptionList = ref([
   height: 650px;
   /* background: #fff; */
 }
-</style>
-<style>
-iframe {
+:deep(.flourish-embed iframe) {
   height: 650px !important;
 }
 </style>

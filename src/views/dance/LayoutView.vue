@@ -83,7 +83,6 @@ onMounted(() => {
       align-items: flex-start;
       padding-left: 182px;
       width: 100%;
-      height: 100%;
       .title {
         display: flex;
         align-items: center;
@@ -100,9 +99,9 @@ onMounted(() => {
     }
     .content {
       margin-top: 36px;
+      height: 100%;
       display: flex;
       justify-content: center;
-      height: 100%;
     }
   }
   .right {

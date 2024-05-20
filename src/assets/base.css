@@ -164,7 +164,7 @@ textarea:not([rows]) {
 
 @font-face {
   font-family: FZMingShangTiS-R-GB;
-  src: url('../assets/font/FZMSTJW.TTF'),
+  src: url('../assets/font/FZMSTJW.ttf'),
 }
 
 @font-face {
@@ -175,4 +175,9 @@ textarea:not([rows]) {
 @font-face {
   font-family: LithosPro;
   src: url('../assets/font/LithosPro.ttf');
+}
+
+@font-face {
+  font-family: FZHuaLi-M14S;
+  src: url('../assets/font/FZHuaLi-M14S.ttf');
 }

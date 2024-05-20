@@ -98,8 +98,10 @@ const router = createRouter({
     { path: '/art', name: 'art', component: () => import('../views/art/index.vue') },
     {
       path: '/art/layout', name: 'art-layout', component: () => import('../views/art/LayoutView.vue'),
+      redirect: '/art/layout/intraduction',
       children: [
         { path: 'intraduction', name: 'intraduction', component: () => import('../views/art/SubIntraduction.vue') },
+        { path: 'material', name: 'material', component: () => import('../views/art/SubMaterial.vue') },
         { path: 'preparation', name: 'preparation', component: () => import('../views/art/SubPreparation.vue') },
         { path: 'bone', name: 'bone', component: () => import('../views/art/SubBone.vue') },
         { path: 'mounting', name: 'mounting', component: () => import('../views/art/SubMounting.vue') },
