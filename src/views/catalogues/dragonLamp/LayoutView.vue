@@ -15,9 +15,18 @@
           <router-view></router-view>
         </div>
       </div>
-      <div class="right" v-if="!isIndex">
+      <div class="right" v-if="!isIndex && !isDetail">
         <div class="side-nav">
           <SideNav :navList="navList" v-model:active="active" />
+        </div>
+      </div>
+      <div class="subtitle" v-if="isDetail">
+        <div class="art-word" @click="backToLayout">
+          <h1>{{ active.title }}</h1>
+          <p>{{ active.pinyin }}</p>
+        </div>
+        <div class="logo" @click="backToIndex">
+          <img src="@/assets/img/catalogues/dragonlamp/logo.svg" />
         </div>
       </div>
     </div>
@@ -28,93 +37,127 @@
 import { onMounted, ref, watch } from 'vue'
 import BaseLayout from '@/components/BaseLayout.vue'
 import SideNav from '@/components/SideNav.vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
 
 const navList = [
   {
     title: '大蠕龙',
     link: '/catalogues/dragonlamp/layout/darulong',
     code: 'darulong',
+    pinyin: 'dà rú lóng',
     showTitleString: '大蠕龙'
   },
   {
     title: '板凳龙',
     link: '/catalogues/dragonlamp/layout/bandenglong',
     code: 'bandenglong',
+    pinyin: 'bǎn dèng lóng',
     showTitleString: '板凳龙'
   },
   {
     title: '彩龙',
     link: '/catalogues/dragonlamp/layout/cailong',
     code: 'cailong',
+    pinyin: 'cǎi lóng',
     showTitleString: '彩龙'
   },
   {
     title: '竹梆龙',
     link: '/catalogues/dragonlamp/layout/zhubanglong',
     code: 'zhubanglong',
+    pinyin: 'zhú bàng lóng',
     showTitleString: '竹梆龙'
   },
   {
     title: '正龙',
     link: '/catalogues/dragonlamp/layout/zhenglong',
     code: 'zhenglong',
+    pinyin: 'zhèng lóng',
     showTitleString: '正龙'
   },
   {
     title: '火龙',
     link: '/catalogues/dragonlamp/layout/huolong',
     code: 'huolong',
+    pinyin: 'huǒ lóng',
     showTitleString: '火龙'
   },
   {
     title: '黄荆龙',
     link: '/catalogues/dragonlamp/layout/huangjinglong',
     code: 'huangjinglong',
+    pinyin: 'huáng jīng lóng',
     showTitleString: '黄荆龙'
   },
   {
     title: '荷花龙',
     link: '/catalogues/dragonlamp/layout/hehualong',
     code: 'hehualong',
+    pinyin: 'hé huā lóng',
     showTitleString: '荷花龙'
   },
   {
     title: '稻草龙',
     link: '/catalogues/dragonlamp/layout/daocaolong',
     code: 'daocaolong',
+    pinyin: 'dào cǎo lóng',
     showTitleString: '稻草龙'
   },
   {
     title: '竞技龙',
     link: '/catalogues/dragonlamp/layout/jingjilong',
     code: 'jingjilong',
+    pinyin: 'jìng jì lóng',
     showTitleString: '竞技龙'
   }
 ]
 
 const active = ref(navList[0])
 const isIndex = ref(false)
+const isDetail = ref(false)
 
 onMounted(() => {
   const link = route.fullPath
   console.log(route)
-  active.value = navList.find((item) => item.link === link) || navList[0]
-  if (link === '/catalogues/dragonlamp/layout') {
-    isIndex.value = true
-  }
-})
-watch(route, () => {
-  const link = route.fullPath
-  active.value = navList.find((item) => item.link === link) || navList[0]
+  active.value = navList.find((item) => link.includes(item.link)) || navList[0]
   if (link === '/catalogues/dragonlamp/layout') {
     isIndex.value = true
   } else {
     isIndex.value = false
   }
+  if (link.split('/').length > 5) {
+    isDetail.value = true
+  } else {
+    isDetail.value = false
+  }
 })
+watch(route, () => {
+  const link = route.fullPath
+  active.value = navList.find((item) => link.includes(item.link)) || navList[0]
+  if (link === '/catalogues/dragonlamp/layout') {
+    isIndex.value = true
+  } else {
+    isIndex.value = false
+  }
+  if (link.split('/').length > 5) {
+    isDetail.value = true
+  } else {
+    isDetail.value = false
+  }
+})
+
+const backToLayout = () => {
+  isDetail.value = false
+  router.push(active.value.link.split('/').slice(0, 5).join('/'))
+}
+
+const backToIndex = () => {
+  isDetail.value = false
+  router.push('/catalogues/dragonlamp/layout')
+}
 </script>
 
 <style scoped>
@@ -158,6 +201,54 @@ watch(route, () => {
     position: absolute;
     top: 0;
     right: 0;
+  }
+  .subtitle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    .art-word {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      justify-content: center;
+      margin-right: 9px;
+      cursor: pointer;
+      h1 {
+        text-align: right;
+        font-family: STLiti;
+        font-size: 86px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        background-image: -webkit-linear-gradient(
+          180deg,
+          #e8198b -0.02%,
+          #e93295 24.57%,
+          #ec73ad 76.66%,
+          #ee92b9 100%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      p {
+        color: #fff1f9;
+        text-align: right;
+        font-family: 'LithosPro';
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 3.4px;
+        padding-right: 9px;
+        margin-top: -13px;
+      }
+    }
+    .logo {
+      cursor: pointer;
+    }
   }
 }
 </style>

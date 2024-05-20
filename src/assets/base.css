@@ -164,10 +164,15 @@ textarea:not([rows]) {
 
 @font-face {
   font-family: FZMingShangTiS-R-GB;
-  src: url('../assets/font/FZMSTJW.TTF');
+  src: url('../assets/font/FZMSTJW.TTF'),
 }
 
 @font-face {
   font-family: STLiti;
-  src: url('../assets/font/STLiti.TTF');
+  src: url('../assets/font/STLiti.ttf');
+}
+
+@font-face {
+  font-family: LithosPro;
+  src: url('../assets/font/LithosPro.ttf');
 }
