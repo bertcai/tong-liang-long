@@ -21,7 +21,7 @@
         <router-link to="/dance">灯舞</router-link>
       </div>
     </div>
-    <div class="logo">
+    <div class="logo" @click="toIndex">
       <slot name="logo"></slot>
     </div>
     <div class="content">
@@ -31,10 +31,16 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const props = defineProps<{
   subTitle: string
   active: string
 }>()
+
+const toIndex = () => {
+  router.push('/')
+}
 </script>
 
 <style scoped>
@@ -86,6 +92,8 @@ const props = defineProps<{
     position: absolute;
     top: 79px;
     left: 89px;
+    cursor: pointer;
+    z-index: 100;
   }
   .content {
     margin-top: 30px;

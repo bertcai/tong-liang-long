@@ -16,6 +16,8 @@
     "@types/uuid": "^9.0.8",
     "@vueuse/core": "^10.9.0",
     "animate.css": "^4.1.1",
+    "eventemitter3": "^5.0.1",
+    "leapjs": "^1.1.1",
     "touchfree": "https://github.com/bertcai/TouchFreeWebTooling/tarball/develop",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",

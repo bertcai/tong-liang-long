@@ -5,11 +5,20 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <script name="TouchFree_Tooling" type="text/javascript" src="TouchFree_Tooling.js"></script> -->
+    <script name="leap" type="text/javascript" src="leap-1.1.1.min.js"></script>
     <title>Vite App</title>
   </head>
   <body>
     <div id="app"></div>
-    <!-- <script>      TouchFree.Init();</script> -->
+    <script>
+      console.log(Leap)
+      Leap.Controller()
+      Leap.loop(function (frame) {
+        if(frame.hands.length){
+          console.log(frame)
+        }
+      })
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

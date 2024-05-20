@@ -7,13 +7,11 @@ import App from './App.vue'
 import router from './router'
 import clickSound from './assets/audio/click.wav'
 import bgmSound from './assets/audio/bgm.flac'
-
 const app = createApp(App)
 
 app.use(router)
 
 app.use(Vue3Lottie)
-
 app.mount('#app')
 
 // 添加全局的点击事件监听器
