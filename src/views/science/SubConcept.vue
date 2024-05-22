@@ -1,6 +1,16 @@
 <template>
   <div class="wrapper">
-    <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17845020"></div>
+    <div class="flourish-embed">
+      <iframe
+        src="https://flo.uri.sh/visualisation/17845020/embed"
+        title="Interactive or visual content"
+        class="flourish-embed-iframe"
+        frameborder="0"
+        scrolling="no"
+        style="width: 100%; height: 600px"
+        sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+      ></iframe>
+    </div>
     <div class="description">
       <div class="item" v-for="item in descriptionList" :key="item.text">
         <div class="color" :style="`background: ${item.color};`"></div>
@@ -15,7 +25,6 @@
 <script setup lang="ts">
 import { useScriptTag } from '@vueuse/core'
 import { ref } from 'vue'
-useScriptTag('https://public.flourish.studio/resources/embed.js')
 
 const descriptionList = ref([
   {

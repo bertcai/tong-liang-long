@@ -11,11 +11,17 @@
         {{ item.title }}
       </div>
     </div>
-    <div
-      v-show="active === 'flow'"
-      class="flourish-embed flourish-hierarchy"
-      data-src="visualisation/17892352"
-    ></div>
+    <div v-if="active === 'flow'" class="flourish-embed">
+      <iframe
+        src="https://flo.uri.sh/visualisation/17892352/embed"
+        title="Interactive or visual content"
+        class="flourish-embed-iframe"
+        frameborder="0"
+        scrolling="no"
+        style="width: 100%; height: 600px"
+        sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+      ></iframe>
+    </div>
     <div v-if="active === 'chart'" class="chart-changer">
       <div
         class="item"
@@ -41,7 +47,6 @@ import head from '@/assets/img/art/intraduction/head.gif'
 import body from '@/assets/img/art/intraduction/body.gif'
 import tail from '@/assets/img/art/intraduction/tail.gif'
 import treasure from '@/assets/img/art/intraduction/treasure.gif'
-useScriptTag('https://public.flourish.studio/resources/embed.js')
 
 const changeSubTitle = inject('changeSubTitle') as (title: string) => void
 const router = useRouter()

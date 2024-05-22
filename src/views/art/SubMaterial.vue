@@ -17,16 +17,26 @@
         <div class="item">{{ active === 'tool' ? '主要工具' : '主要材料' }}</div>
         <div class="item">工艺</div>
       </div>
-      <div
-        v-show="active === 'tool'"
-        class="flourish-embed flourish-hierarchy"
-        data-src="visualisation/17936013"
-      ></div>
-      <div
-        v-show="active === 'material'"
-        class="flourish-embed flourish-hierarchy"
-        data-src="visualisation/17944235"
-      ></div>
+      <div v-if="active === 'tool'" class="flourish-embed">
+        <iframe
+          src="https://flo.uri.sh/visualisation/17936013/embed"
+          title="Interactive or visual content"
+          class="flourish-embed-iframe"
+          frameborder="0"
+          scrolling="no"
+          sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+        ></iframe>
+      </div>
+      <div v-if="active === 'material'" class="flourish-embed">
+        <iframe
+          src="https://flo.uri.sh/visualisation/17944235/embed"
+          title="Interactive or visual content"
+          class="flourish-embed-iframe"
+          frameborder="0"
+          scrolling="no"
+          sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+        ></iframe>
+      </div>
     </div>
   </div>
 </template>
@@ -35,7 +45,6 @@
 import { useScriptTag } from '@vueuse/core'
 import { onMounted, onBeforeUnmount, ref, type Ref, inject } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-useScriptTag('https://public.flourish.studio/resources/embed.js')
 
 const changeSubTitle = inject('changeSubTitle') as (title: string) => void
 const router = useRouter()
@@ -53,7 +62,7 @@ const clickRegion = (code: string) => {
 }
 onMounted(() => {
   const currentRegion = route.query.region as string
-  active.value = currentRegion || 'origin'
+  active.value = currentRegion || 'tool'
 })
 </script>
 
@@ -112,5 +121,6 @@ onMounted(() => {
 }
 :deep(.flourish-embed iframe) {
   height: 633px !important;
+  width: 100%;
 }
 </style>
