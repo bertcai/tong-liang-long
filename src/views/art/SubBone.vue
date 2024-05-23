@@ -1,7 +1,207 @@
 <template>
-  <div>扎骨</div>
+  <div class="wrapper">
+    <div class="region-changer">
+      <div
+        class="item"
+        :key="item.code"
+        v-for="item in list"
+        :class="active === item.code ? 'active' : ''"
+        @click="clickRegion(item.code)"
+      >
+        {{ item.title }}
+      </div>
+    </div>
+    <div v-if="active !== 'head'" class="chart-changer">
+      <div
+        class="item"
+        :key="item.code"
+        v-for="item in listObj[active as keyof typeof listObj]"
+        :class="subActive === item.code ? 'active' : ''"
+        @click="clickChart(item.code)"
+      >
+        <div class="inner">
+          {{ item.title }}
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useScriptTag } from '@vueuse/core'
+import { onMounted, onBeforeUnmount, ref, type Ref, inject } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import head from '@/assets/img/art/bone/head.gif'
+import bodyOrder from '@/assets/img/art/bone/bodyOrder.gif'
+import bodyMethod from '@/assets/img/art/bone/bodyMethod.gif'
+import tailHard from '@/assets/img/art/bone/tailHard.gif'
+import tailWing from '@/assets/img/art/bone/tailWing.gif'
+import tailAssemble from '@/assets/img/art/bone/tailAssemble.gif'
+import treasure1 from '@/assets/img/art/bone/treasure1.gif'
+import treasure2 from '@/assets/img/art/bone/treasure2.gif'
+import treasure3 from '@/assets/img/art/bone/treasure3.gif'
 
-<style scoped></style>
+const changeSubTitle = inject('changeSubTitle') as (title: string) => void
+const router = useRouter()
+const route = useRoute()
+const active = ref('origin')
+const activeUrl = ref('')
+const list = [
+  { code: 'head', title: '扎制龙头', src: head, showSubTitle: '扎制龙头' },
+  { code: 'body', title: '扎制龙身' },
+  { code: 'tail', title: '扎制龙尾' },
+  { code: 'treasure', title: '扎制龙宝' }
+]
+
+const subActive = ref('')
+
+const listObj = {
+  body: [
+    { title: '顺序', code: 'order', src: bodyOrder, showSubTitle: '扎制龙身' },
+    { title: '方法', code: 'method', src: bodyMethod, showSubTitle: '绑扎方法' }
+  ],
+  tail: [
+    { title: '硬栋', code: 'hard', src: tailHard, showSubTitle: '扎制龙尾硬栋' },
+    { title: '尾翼', code: 'wing', src: tailWing, showSubTitle: '扎制尾翼' },
+    { title: '组装', code: 'assemble', src: tailAssemble, showSubTitle: '组装硬栋、尾翼' }
+  ],
+  treasure: [
+    { title: '1', code: '1', src: treasure1, showSubTitle: '扎制龙宝' },
+    { title: '2', code: '2', src: treasure2, showSubTitle: '扎制龙宝' },
+    { title: '3', code: '3', src: treasure3, showSubTitle: '扎制龙宝' }
+  ]
+}
+
+const app = document.querySelector('#app') as any
+const clickRegion = (code: string) => {
+  active.value = code
+  router.push({ query: { region: code } })
+  activeUrl.value = list.find((item) => item.code === active.value)?.src + '?' + Math.random() || ''
+  app.style.background = `url(${activeUrl.value}) no-repeat`
+  changeSubTitle(list.find((item) => item.code === active.value)?.showSubTitle || '')
+  if (code !== 'head') {
+    subActive.value = listObj[code as keyof typeof listObj][0].code
+    router.push({ query: { region: code, subActive: subActive.value } })
+    activeUrl.value =
+      listObj[code as keyof typeof listObj].find((item) => item.code === subActive.value)?.src +
+        '?' +
+        Math.random() || ''
+    app.style.background = `url(${activeUrl.value}) no-repeat`
+    changeSubTitle(
+      listObj[code as keyof typeof listObj].find((item) => item.code === subActive.value)
+        ?.showSubTitle || ''
+    )
+  }
+}
+
+const clickChart = (code: string) => {
+  subActive.value = code
+  router.push({ query: { region: active.value, subActive: code } })
+  activeUrl.value =
+    listObj[active.value as keyof typeof listObj].find((item) => item.code === subActive.value)
+      ?.src +
+      '?' +
+      Math.random() || ''
+  app.style.background = `url(${activeUrl.value}) no-repeat`
+  changeSubTitle(
+    listObj[active.value as keyof typeof listObj].find((item) => item.code === subActive.value)
+      ?.showSubTitle || ''
+  )
+}
+
+onMounted(() => {
+  const currentRegion = route.query.region as string
+  const currentSubActive = route.query.subActive as string
+  active.value = currentRegion || 'head'
+  activeUrl.value = list.find((item) => item.code === active.value)?.src + '?' + Math.random() || ''
+  changeSubTitle(list.find((item) => item.code === active.value)?.showSubTitle || '')
+  if (currentRegion !== 'head') {
+    subActive.value = currentSubActive || listObj[currentRegion as keyof typeof listObj][0].code
+    activeUrl.value =
+      listObj[currentRegion as keyof typeof listObj].find((item) => item.code === subActive.value)
+        ?.src +
+        '?' +
+        Math.random() || ''
+    changeSubTitle(
+      listObj[currentRegion as keyof typeof listObj].find((item) => item.code === subActive.value)
+        ?.showSubTitle || ''
+    )
+  }
+  app.style.background = `url(${activeUrl.value}) no-repeat`
+})
+
+onBeforeUnmount(() => {
+  app.style.background = ''
+})
+</script>
+
+<style scoped>
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10px;
+  width: 100%;
+  .region-changer {
+    margin-left: 90px;
+    margin-top: 270px;
+    z-index: 100;
+    .item {
+      width: 127px;
+      height: 43px;
+      margin-bottom: 31px;
+      font-family: Inter;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.4;
+      cursor: pointer;
+      &.active {
+        background: url('@/assets/img/science/region-link-bg.svg');
+        opacity: 1;
+      }
+    }
+  }
+  .chart-changer {
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    .item {
+      width: 62px;
+      height: 62px;
+      background: url('@/assets/img/art/intraduction/chart-link-bg.svg');
+      color: #3f0022;
+      text-align: center;
+      font-family: FZHuaLi-M14S;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .inner {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url('@/assets/img/art/intraduction/chart-link-bg-inner.svg');
+      }
+      &.active .inner {
+        color: #fff1f9;
+        background: url('@/assets/img/art/intraduction/chart-link-bg-inner-active.svg');
+      }
+    }
+  }
+}
+</style>
