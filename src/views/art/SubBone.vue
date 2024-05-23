@@ -36,6 +36,19 @@
         </div>
       </div>
     </div>
+    <div v-if="active === 'head'" class="mask" ref="mask"></div>
+    <div v-if="active === 'head'" class="tongliang-mask">
+      <div
+        v-for="item in lampTypes"
+        :key="item.code"
+        :class="['lamp-type-box']"
+        :id="item.code"
+        @mouseover="hoverLamp(item.code)"
+        @mouseleave="leaveLamp(item.code)"
+      >
+        <div class="circle"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -55,6 +68,13 @@ import treasure3 from '@/assets/img/art/bone/treasure3.gif'
 import ord1 from '@/assets/img/art/bone/ord1.svg'
 import ord2 from '@/assets/img/art/bone/ord2.svg'
 import ord3 from '@/assets/img/art/bone/ord3.svg'
+import zhalongshe from '@/assets/img/art/bone/zhalongshe.gif'
+import zhaxiongbao from '@/assets/img/art/bone/zhaxiongbao.gif'
+import shangexiahe from '@/assets/img/art/bone/shangexiahe.gif'
+import zhalongbi from '@/assets/img/art/bone/zhalongbi.gif'
+import zhalongjiao from '@/assets/img/art/bone/zhalongjiao.gif'
+import zhalongjing from '@/assets/img/art/bone/zhalongjing.gif'
+import zhalongsai from '@/assets/img/art/bone/zhalongsai.gif'
 
 const changeSubTitle = inject('changeSubTitle') as (title: string) => void
 const router = useRouter()
@@ -157,6 +177,33 @@ onMounted(() => {
 onBeforeUnmount(() => {
   app.style.background = ''
 })
+
+const mask = ref() as Ref<HTMLElement>
+
+const lampTypes = ref([
+  { code: 'zhalongshe', name: '扎龙舌', src: zhalongshe },
+  { code: 'zhaxiongbao', name: '扎雄包', src: zhaxiongbao },
+  { code: 'shangexiahe', name: '上颚下颌', src: shangexiahe },
+  { code: 'zhalongbi', name: '扎龙鼻', src: zhalongbi },
+  { code: 'zhalongjiao', name: '扎龙角', src: zhalongjiao },
+  { code: 'zhalongjing', name: '扎龙颈', src: zhalongjing },
+  { code: 'zhalongsai', name: '扎龙腮', src: zhalongsai }
+])
+
+const hoverLamp = async (code: string) => {
+  console.log(code)
+  const url = lampTypes.value!.find((item) => item.code === code)?.src + '?' + Math.random() || ''
+  mask.value!.style.background = `url(${url}) no-repeat`
+  mask.value!.style.backgroundSize = 'cover'
+  app.style.background = ''
+}
+
+const leaveLamp = (code: string) => {
+  mask.value!.style.background = ''
+  mask.value!.style.backgroundSize = ''
+  app.style.background = `url(${activeUrl.value}) no-repeat`
+  console.log(code)
+}
 </script>
 
 <style scoped>
@@ -253,6 +300,65 @@ onBeforeUnmount(() => {
       position: absolute;
       top: 0;
       left: 580px;
+    }
+  }
+}
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  z-index: -1;
+}
+.tongliang-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  .lamp-type-box {
+    display: flex;
+    align-items: flex-start;
+    .circle {
+      width: 175px;
+      height: 175px;
+      border-radius: 50%;
+    }
+    &#zhalongshe {
+      position: absolute;
+      top: 680px;
+      left: 1050px;
+    }
+    &#zhaxiongbao {
+      position: absolute;
+      top: 654px;
+      left: 642px;
+    }
+    &#shangexiahe {
+      position: absolute;
+      top: 331px;
+      left: 680.7px;
+    }
+    &#zhalongbi {
+      position: absolute;
+      top: 403px;
+      left: 961px;
+    }
+    &#zhalongjiao {
+      position: absolute;
+      top: 518px;
+      left: 1230.6px;
+    }
+    &#zhalongjing {
+      position: absolute;
+      top: 438.6px;
+      left: 410.5px;
+    }
+    &#zhalongsai {
+      position: absolute;
+      top: 535px;
+      left: 1496px;
     }
   }
 }
