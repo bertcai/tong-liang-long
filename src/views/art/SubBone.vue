@@ -11,6 +11,18 @@
         {{ item.title }}
       </div>
     </div>
+    <div v-if="active === 'treasure'" class="treasure-box">
+      <div class="treasure">
+        <img
+          class="treasure-img"
+          :src="listObj.treasure.find((item) => item.code === subActive)?.src"
+        />
+      </div>
+      <img
+        :src="listObj.treasure.find((item) => item.code === subActive)?.titleSrc"
+        class="title"
+      />
+    </div>
     <div v-if="active !== 'head'" class="chart-changer">
       <div
         class="item"
@@ -40,6 +52,9 @@ import tailAssemble from '@/assets/img/art/bone/tailAssemble.gif'
 import treasure1 from '@/assets/img/art/bone/treasure1.gif'
 import treasure2 from '@/assets/img/art/bone/treasure2.gif'
 import treasure3 from '@/assets/img/art/bone/treasure3.gif'
+import ord1 from '@/assets/img/art/bone/ord1.svg'
+import ord2 from '@/assets/img/art/bone/ord2.svg'
+import ord3 from '@/assets/img/art/bone/ord3.svg'
 
 const changeSubTitle = inject('changeSubTitle') as (title: string) => void
 const router = useRouter()
@@ -66,9 +81,9 @@ const listObj = {
     { title: '组装', code: 'assemble', src: tailAssemble, showSubTitle: '组装硬栋、尾翼' }
   ],
   treasure: [
-    { title: '1', code: '1', src: treasure1, showSubTitle: '扎制龙宝' },
-    { title: '2', code: '2', src: treasure2, showSubTitle: '扎制龙宝' },
-    { title: '3', code: '3', src: treasure3, showSubTitle: '扎制龙宝' }
+    { title: '1', code: '1', src: treasure1, titleSrc: ord1, showSubTitle: '扎制龙宝' },
+    { title: '2', code: '2', src: treasure2, titleSrc: ord2, showSubTitle: '扎制龙宝' },
+    { title: '3', code: '3', src: treasure3, titleSrc: ord3, showSubTitle: '扎制龙宝' }
   ]
 }
 
@@ -92,6 +107,9 @@ const clickRegion = (code: string) => {
         ?.showSubTitle || ''
     )
   }
+  if (code === 'treasure') {
+    app.style.background = ''
+  }
 }
 
 const clickChart = (code: string) => {
@@ -107,10 +125,13 @@ const clickChart = (code: string) => {
     listObj[active.value as keyof typeof listObj].find((item) => item.code === subActive.value)
       ?.showSubTitle || ''
   )
+  if (active.value === 'treasure') {
+    app.style.background = ''
+  }
 }
 
 onMounted(() => {
-  const currentRegion = route.query.region as string
+  const currentRegion = (route.query.region as string) || 'head'
   const currentSubActive = route.query.subActive as string
   active.value = currentRegion || 'head'
   activeUrl.value = list.find((item) => item.code === active.value)?.src + '?' + Math.random() || ''
@@ -128,6 +149,9 @@ onMounted(() => {
     )
   }
   app.style.background = `url(${activeUrl.value}) no-repeat`
+  if (active.value === 'treasure') {
+    app.style.background = ''
+  }
 })
 
 onBeforeUnmount(() => {
@@ -201,6 +225,34 @@ onBeforeUnmount(() => {
         color: #fff1f9;
         background: url('@/assets/img/art/intraduction/chart-link-bg-inner-active.svg');
       }
+    }
+  }
+  .treasure-box {
+    width: 700px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    .treasure-img {
+      width: 536px;
+      height: 533px;
+      border-radius: 302.552px;
+      background: linear-gradient(
+        179deg,
+        #e8198b -5.65%,
+        rgba(233, 50, 149, 0.75) 16.41%,
+        rgba(236, 115, 173, 0.23) 63.15%,
+        rgba(238, 146, 185, 0) 84.1%
+      );
+    }
+    .title {
+      position: absolute;
+      top: 0;
+      left: 580px;
     }
   }
 }

@@ -62,7 +62,7 @@ const navList = [
 const active = ref(navList[0])
 
 onMounted(() => {
-  const link = route.fullPath
+  const link = route.fullPath.split('?')[0]
   console.log(route)
   active.value = navList.find((item) => item.link === link) || navList[0]
 })

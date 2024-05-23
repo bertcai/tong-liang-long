@@ -120,7 +120,7 @@ const isIndex = ref(false)
 const isDetail = ref(false)
 
 onMounted(() => {
-  const link = route.fullPath
+  const link = route.fullPath.split('?')[0]
   console.log(route)
   active.value = navList.find((item) => link.includes(item.link)) || navList[0]
   if (link === '/catalogues/dragonlamp/layout') {
@@ -135,7 +135,7 @@ onMounted(() => {
   }
 })
 watch(route, () => {
-  const link = route.fullPath
+  const link = route.fullPath.split('?')[0]
   active.value = navList.find((item) => link.includes(item.link)) || navList[0]
   if (link === '/catalogues/dragonlamp/layout') {
     isIndex.value = true
