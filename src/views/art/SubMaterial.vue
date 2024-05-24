@@ -51,7 +51,7 @@ const router = useRouter()
 const route = useRoute()
 const active = ref('tool')
 const list = [
-  { code: 'tool', title: '主要工具', src: origin, showSubTitle: '主要工具' },
+  { code: 'tool', title: '主要工具', showSubTitle: '主要工具' },
   { code: 'material', title: '主要材料', showSubTitle: '主要材料' }
 ]
 
