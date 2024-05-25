@@ -65,6 +65,9 @@ onBeforeUnmount(() => {
     margin-top: 270px;
     z-index: 100;
     .item {
+      padding: 4px 14px 0 14px;
+      text-align: justify;
+      text-align-last: justify;
       width: 175px;
       height: 43px;
       margin-bottom: 31px;
@@ -73,9 +76,6 @@ onBeforeUnmount(() => {
       font-style: normal;
       font-weight: 400;
       line-height: normal;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       opacity: 0.4;
       cursor: pointer;
       &.active {
