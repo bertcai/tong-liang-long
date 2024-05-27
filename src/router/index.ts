@@ -117,7 +117,7 @@ const router = createRouter({
         { path: 'baseaction', name: 'd-baseaction', component: () => import('../views/dance/SubBaseAction.vue') },
         { path: 'hardaction', name: 'd-hardaction', component: () => import('../views/dance/SubHardAction.vue') },
         { path: 'groupaction', name: 'd-groupaction', component: () => import('../views/dance/SubGroupAction.vue') },
-        { path: 'routine', name: 'routine', component: () => import('../views/dance/SubRoutine.vue') },
+        { path: 'hand', name: 'hand', component: () => import('../views/dance/SubHand.vue') },
       ]
     },
 

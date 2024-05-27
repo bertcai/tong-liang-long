@@ -51,17 +51,17 @@ const navList = [
     code: 'hardaction',
     showTitleString: '难度动作'
   },
+  // {
+  //   title: '组图造型动作',
+  //   link: '/dance/layout/groupaction',
+  //   code: 'groupaction',
+  //   showTitleString: '组图造型动作'
+  // },
   {
-    title: '组图造型动作',
-    link: '/dance/layout/groupaction',
-    code: 'groupaction',
-    showTitleString: '组图造型动作'
-  },
-  {
-    title: '套路',
-    link: '/dance/layout/routine',
-    code: 'routine',
-    showTitleString: '套路'
+    title: '手势互动',
+    link: '/dance/layout/hand',
+    code: 'hand',
+    showTitleString: '手势互动'
   }
 ]
 
