@@ -8,7 +8,7 @@
         <div class="title-box">
           <div class="title">
             <img src="@/assets/img/sub-title-icon.svg" />
-            {{ active.showTitleString }}
+            {{ subTitle }}
           </div>
         </div>
         <div class="content">
@@ -25,12 +25,18 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, provide, watch } from 'vue'
 import BaseLayout from '@/components/BaseLayout.vue'
 import SideNav from '@/components/SideNav.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+
+const subTitle = ref('')
+const changeSubTitle = (title: string) => {
+  subTitle.value = title
+}
+provide('changeSubTitle', changeSubTitle)
 
 const navList = [
   {
@@ -65,7 +71,15 @@ onMounted(() => {
   const link = route.fullPath.split('?')[0]
   console.log(route)
   active.value = navList.find((item) => item.link === link) || navList[0]
+  subTitle.value = active.value.showTitleString
 })
+
+watch(
+  () => active.value,
+  (value) => {
+    subTitle.value = value.showTitleString
+  }
+)
 </script>
 
 <style scoped>
