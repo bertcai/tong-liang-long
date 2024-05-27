@@ -98,7 +98,6 @@ const app = document.querySelector('#app') as any
 const clickRegion = (code: string) => {
   active.value = code
   router.push({ query: { region: code } })
-  activeUrl.value = list.find((item) => item.code === active.value)?.src + '?' + Math.random() || ''
   app.style.background = `url(${activeUrl.value}) no-repeat`
   subActive.value = listObj[code as keyof typeof listObj][0].code
   router.push({ query: { region: code, subActive: subActive.value } })
@@ -135,7 +134,6 @@ onMounted(() => {
   const currentRegion = (route.query.region as string) || 'step'
   const currentSubActive = route.query.subActive as string
   active.value = currentRegion || 'step'
-  activeUrl.value = list.find((item) => item.code === active.value)?.src + '?' + Math.random() || ''
   subActive.value = currentSubActive || listObj[currentRegion as keyof typeof listObj][0].code
   activeUrl.value =
     listObj[currentRegion as keyof typeof listObj].find((item) => item.code === subActive.value)
