@@ -191,3 +191,8 @@ textarea:not([rows]) {
   font-family: FZLiShu-II-S06S;
   src: url('../assets/font/FZL2JF.ttf');
 }
+
+@font-face {
+  font-family: jiangxizhuokai;
+  src: url('../assets/font/jiangxizhuokai.ttf');
+}

@@ -71,6 +71,9 @@ onMounted(() => {
   const link = route.fullPath.split('?')[0]
   console.log(route)
   active.value = navList.find((item) => item.link === link) || navList[0]
+  if (link === '/dance/layout/game') {
+    active.value = navList[2]
+  }
   subTitle.value = active.value.showTitleString
 })
 

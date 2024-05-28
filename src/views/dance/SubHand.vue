@@ -154,7 +154,7 @@ onMounted(() => {
           #e8198b 147.74%
         );
         background-clip: text;
-        font-family: FZLiShu-II-S06S;
+        font-family: jiangxizhuokai;
         font-size: 38px;
         font-style: normal;
         font-weight: 400;
