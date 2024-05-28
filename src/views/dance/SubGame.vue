@@ -48,7 +48,7 @@ const finish = ref(false)
 const successTimer = ref()
 const success = ref(false)
 
-const moveBall = (event as any) => {
+const moveBall = (event: { clientX: number; clientY: number }) => {
   showBall.value = true
   const ball = document.getElementById('ball') as any
   const wrapper = document.getElementById('gameFrame') as any
