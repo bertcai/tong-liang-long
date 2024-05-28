@@ -186,3 +186,8 @@ textarea:not([rows]) {
   font-family: Inter;
   src: url('../assets/font/InterVariable.ttf');
 }
+
+@font-face {
+  font-family: FZLiShu-II-S06S;
+  src: url('../assets/font/FZL2JF.ttf');
+}
