@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, watch } from 'vue'
+import { ref, inject, watch, onMounted } from 'vue'
 import yylmBg from '@/assets/img/dance/game/yylm-bg.svg'
 import yylmMap from '@/assets/img/dance/game/yylm-map.svg'
 import yylmGif from '@/assets/img/dance/game/yylm-fn.gif'
@@ -45,8 +45,8 @@ const showMask = ref(false)
 const gameFrame = ref(null)
 const finish = ref(false)
 
-const successTimer = ref(null)
-const success = ref(true)
+const successTimer = ref()
+const success = ref(false)
 
 const moveBall = (event) => {
   showBall.value = true
@@ -78,6 +78,8 @@ const caseEnd = () => {
     finish.value = true
     app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
     success.value = true
+    localStorage.setItem('gameResult', 'success')
+    localStorage.setItem('gameState', 'finish')
     setTimeout(() => {
       showMask.value = true
     }, 5000)
@@ -101,6 +103,15 @@ watch(
   },
   { immediate: true }
 )
+
+onMounted(() => {
+  game.value = localStorage.getItem('gameType') || 'yylm'
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'gameType') {
+      game.value = event.newValue || 'yylm'
+    }
+  })
+})
 </script>
 
 <style scoped>

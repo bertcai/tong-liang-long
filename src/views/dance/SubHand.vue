@@ -57,6 +57,8 @@ const clickConfirm = () => {
 const open = (name: string) => {
   console.log('open', name)
   state.value = 'playing'
+  localStorage.setItem('gameState', 'playing')
+  localStorage.setItem('gameType', name)
 }
 const repeat = () => {
   console.log('repeat')
@@ -69,6 +71,15 @@ const toList = () => {
 }
 onMounted(() => {
   app.style.background = `url(${mainBg}) no-repeat`
+  window.addEventListener('storage', (event) => {
+    console.log(event.key, event.newValue)
+    if (event.key === 'gameState') {
+      state.value = event.newValue || 'chapter'
+    }
+    if (event.key === 'gameResult') {
+      success.value = event.newValue === 'success'
+    }
+  })
 })
 </script>
 
