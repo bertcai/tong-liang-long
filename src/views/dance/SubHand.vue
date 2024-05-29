@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import mainBg from '@/assets/img/dance/hand/main-bg.png'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 const app = document.querySelector('#app') as any
 
 const state = ref('interview')
@@ -72,6 +72,15 @@ const toList = () => {
 onMounted(() => {
   app.style.background = `url(${mainBg}) no-repeat`
   window.addEventListener('storage', (event) => {
+    console.log(event.key, event.newValue)
+    if (event.key === 'gameState') {
+      state.value = event.newValue || 'chapter'
+    }
+  })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('storage', (event) => {
     console.log(event.key, event.newValue)
     if (event.key === 'gameState') {
       state.value = event.newValue || 'chapter'
