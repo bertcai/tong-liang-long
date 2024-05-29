@@ -81,6 +81,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  localStorage.setItem('gameState', 'interview')
   window.removeEventListener('storage', (event) => {
     console.log(event.key, event.newValue)
     if (event.key === 'gameState') {
