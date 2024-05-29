@@ -1,11 +1,36 @@
 <template>
   <div class="wrapper">
-    <div class="map" ref="gameFrame" id="gameFrame" @pointermove="moveBall" @mousemove="moveBall" :class="game">
+    <div v-if="state === 'interview' || state === 'chapter'" class="mp4">
+      <video
+        ref="video"
+        src="@/assets/img/dance/game/interview.mp4"
+        controls
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+      ></video>
+    </div>
+    <div
+      class="map"
+      ref="gameFrame"
+      id="gameFrame"
+      @pointermove="moveBall"
+      @mousemove="moveBall"
+      :class="game"
+    >
       <img v-if="state === 'playing'" :src="countdownUrl" class="countdown" />
-      <img v-show="showBall" src="@/assets/img/dance/game/ball.png" id="ball" class="ball" />
+      <img v-show="showBall && state === 'playing'" src="@/assets/img/dance/game/ball.png" id="ball" class="ball" />
       <img v-if="state === 'playing'" :src="list.find((item) => item.code === game)?.map" />
       <div class="start"></div>
-      <div class="end" @mouseenter="caseEnd" @mouseleave="leaveEnd" @pointerenter="caseEnd" @pointerleave="leaveEnd"></div>
+      <div
+        class="end"
+        @mouseenter="caseEnd"
+        @mouseleave="leaveEnd"
+        @pointerenter="caseEnd"
+        @pointerleave="leaveEnd"
+      ></div>
       <div class="attr start"></div>
       <div class="attr end"></div>
     </div>
@@ -46,12 +71,11 @@ const showBall = ref(false)
 const mask = ref(null)
 const showMask = ref(false)
 const gameFrame = ref(null)
-const state = ref('playing')
+const state = ref('interview')
 
 const successTimer = ref()
 
 const moveBall = (event: { clientX: number; clientY: number }) => {
-  console.log(event)
   showBall.value = true
   const ball = document.getElementById('ball') as any
   const wrapper = document.getElementById('gameFrame') as any
@@ -80,6 +104,8 @@ const caseEnd = () => {
     showBall.value = false
     app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
     state.value = 'success'
+    clearTimeout(failTimer.value)
+    failTimer.value = null
     setTimeout(() => {
       showMask.value = true
       localStorage.setItem('gameState', 'success')
@@ -97,7 +123,7 @@ const leaveEnd = () => {
 
 const countdownUrl = ref(countdown + '?' + Date.now())
 watch(
-  ()=>state.value,
+  () => state.value,
   (value) => {
     if (value === 'playing') {
       countdownUrl.value = countdown + '?' + Date.now()
@@ -115,6 +141,8 @@ watch(
   { immediate: true }
 )
 
+const failTimer = ref()
+
 onMounted(() => {
   game.value = localStorage.getItem('gameType') || 'yylm'
   window.addEventListener('storage', (event) => {
@@ -125,6 +153,12 @@ onMounted(() => {
       state.value = event.newValue || 'playing'
       if (event.newValue !== 'success' || event.newValue !== 'fail') {
         showMask.value = false
+        clearTimeout(failTimer.value)
+        failTimer.value = setTimeout(() => {
+          state.value = 'fail'
+          showMask.value = true
+          localStorage.setItem('gameState', 'fail')
+        }, 20000)
       }
     }
   })
@@ -138,6 +172,14 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.mp4{
+  position: fixed;
+  width: 1920px;
+  height: 1080px;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
 .mask {
   position: fixed;
   width: 1920px;
@@ -146,7 +188,7 @@ onUnmounted(() => {
   left: 0;
   display: flex;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.9/*  */);
+  background-color: rgba(0, 0, 0, 0.9 /*  */);
   z-index: 999;
   .modal {
     margin-top: 299px;
@@ -190,8 +232,6 @@ onUnmounted(() => {
   .map {
     width: fit-content;
     position: relative;
-    border: 4px dashed rgba(255, 255, 255, 0.5);
-    border-spacing: 5px;
     padding: 4px;
     .countdown {
       pointer-events: none;

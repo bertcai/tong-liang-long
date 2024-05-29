@@ -50,6 +50,7 @@ const stateTitleList = {
 const clickConfirm = () => {
   console.log('clickConfirm')
   state.value = 'chapter'
+  localStorage.setItem('gameState', 'chapter')
 }
 
 const open = (name: string) => {
