@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="map" ref="gameFrame" id="gameFrame" @mousemove="moveBall" :class="game">
-      <img src="@/assets/img/dance/game/countdown.gif" class="countdown" />
+      <img v-if="state === 'playing'" :src="countdownUrl" class="countdown" />
       <img v-show="showBall" src="@/assets/img/dance/game/ball.png" id="ball" class="ball" />
       <img v-if="state === 'playing'" :src="list.find((item) => item.code === game)?.map" />
       <div class="start"></div>
@@ -30,6 +30,7 @@ import gtplGif from '@/assets/img/dance/game/gtpl-fn.gif'
 import blghBg from '@/assets/img/dance/game/blgh-bg.svg'
 import blghMap from '@/assets/img/dance/game/blgh-map.svg'
 import blghGif from '@/assets/img/dance/game/blgh-fn.gif'
+import countdown from '@/assets/img/dance/game/countdown.gif'
 const game = ref('blgh')
 
 const app = document.querySelector('#app') as any
@@ -92,6 +93,16 @@ const leaveEnd = () => {
   }
 }
 
+const countdownUrl = ref(countdown + '?' + Date.now())
+watch(
+  ()=>state.value,
+  (value) => {
+    if (value === 'playing') {
+      countdownUrl.value = countdown + '?' + Date.now()
+    }
+  }
+)
+
 watch(
   () => game.value,
   (value) => {
@@ -110,7 +121,7 @@ onMounted(() => {
     }
     if (event.key === 'gameState') {
       state.value = event.newValue || 'playing'
-      if (event.newValue === 'playing') {
+      if (event.newValue !== 'success' || event.newValue !== 'fail') {
         showMask.value = false
       }
     }
