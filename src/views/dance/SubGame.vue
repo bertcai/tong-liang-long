@@ -103,8 +103,8 @@ const caseEnd = () => {
     successTimer.value = null
     showBall.value = false
     app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
-    state.value = 'success'
     clearTimeout(failTimer.value)
+    state.value = 'success'
     failTimer.value = null
     setTimeout(() => {
       showMask.value = true
@@ -158,6 +158,7 @@ onMounted(() => {
           state.value = 'fail'
           showMask.value = true
           localStorage.setItem('gameState', 'fail')
+          clearTimeout(successTimer.value)
         }, 20000)
       }
     }
