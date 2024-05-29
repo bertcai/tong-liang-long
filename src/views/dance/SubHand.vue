@@ -18,9 +18,9 @@
         <div class="item blgh" @click="open('blgh')"></div>
       </div>
     </div>
-    <div v-if="state === 'finish'" class="interview">
+    <div v-if="state === 'success' || state === 'fail'" class="interview">
       <div class="title">{{ stateTitleList[state] }}</div>
-      <div class="header">{{ success ? '挑战成功' : '挑战失败' }}</div>
+      <div class="header">{{ state === 'success' ? '挑战成功' : '挑战失败' }}</div>
       <div class="operate">
         <div class="confirm" @click="repeat">
           <span>再试一次</span>
@@ -38,17 +38,15 @@ import mainBg from '@/assets/img/dance/hand/main-bg.png'
 import { onMounted, ref } from 'vue'
 const app = document.querySelector('#app') as any
 
-const state = ref('finish')
+const state = ref('interview')
 const stateTitleList = {
   interview: '【游戏说明】',
   chapter: '请选择下面任意关卡进行挑战',
   playing: '【游戏中】',
-  finish: '【游戏结束】'
+  success: '【游戏结束】',
+  fail: '【游戏结束】'
 }
 
-const success = ref(false)
-
-const showChapter = ref(true)
 const clickConfirm = () => {
   console.log('clickConfirm')
   state.value = 'chapter'
@@ -63,11 +61,13 @@ const open = (name: string) => {
 const repeat = () => {
   console.log('repeat')
   state.value = 'playing'
+  localStorage.setItem('gameState', 'playing')
 }
 
 const toList = () => {
   console.log('toList')
   state.value = 'chapter'
+  localStorage.setItem('gameState', 'chapter')
 }
 onMounted(() => {
   app.style.background = `url(${mainBg}) no-repeat`
@@ -75,9 +75,6 @@ onMounted(() => {
     console.log(event.key, event.newValue)
     if (event.key === 'gameState') {
       state.value = event.newValue || 'chapter'
-    }
-    if (event.key === 'gameResult') {
-      success.value = event.newValue === 'success'
     }
   })
 })

@@ -25,6 +25,13 @@ const props = defineProps<{
 const emit = defineEmits(['update:active'])
 
 const clickRouterLink = (index: string | number) => {
+  if (props.navList[index as number].link === '/dance/layout/hand') {
+    const hasOpen = localStorage.getItem('openGameFrame')
+    if (hasOpen !== 'true') {
+      localStorage.setItem('openGameFrame', 'true')
+      window.open('/dance/layout/game', '_blank')
+    }
+  }
   emit('update:active', props.navList[index as number])
 }
 </script>

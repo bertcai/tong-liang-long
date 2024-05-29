@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
     <div class="map" ref="gameFrame" id="gameFrame" @mousemove="moveBall" :class="game">
+      <img src="@/assets/img/dance/game/countdown.gif" class="countdown" />
       <img v-show="showBall" src="@/assets/img/dance/game/ball.png" id="ball" class="ball" />
-      <img v-if="!finish" :src="list.find((item) => item.code === game)?.map" />
+      <img v-if="state === 'playing'" :src="list.find((item) => item.code === game)?.map" />
       <div class="start"></div>
       <div class="end" @mouseenter="caseEnd" @mouseleave="leaveEnd"></div>
       <div class="attr start"></div>
@@ -12,14 +13,14 @@
   </div>
   <div v-if="showMask" class="mask" ref="mask">
     <div class="modal">
-      <div class="title">{{ success ? '恭喜你' : '很遗憾' }}</div>
-      <div class="header">{{ success ? '挑战成功' : '挑战失败' }}</div>
+      <div class="title">{{ state === 'success' ? '恭喜你' : '很遗憾' }}</div>
+      <div class="header">{{ state === 'success' ? '挑战成功' : '挑战失败' }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, inject, watch, onMounted } from 'vue'
+import { ref, inject, watch, onMounted, onUnmounted } from 'vue'
 import yylmBg from '@/assets/img/dance/game/yylm-bg.svg'
 import yylmMap from '@/assets/img/dance/game/yylm-map.svg'
 import yylmGif from '@/assets/img/dance/game/yylm-fn.gif'
@@ -43,10 +44,9 @@ const showBall = ref(false)
 const mask = ref(null)
 const showMask = ref(false)
 const gameFrame = ref(null)
-const finish = ref(false)
+const state = ref('playing')
 
 const successTimer = ref()
-const success = ref(false)
 
 const moveBall = (event: { clientX: number; clientY: number }) => {
   showBall.value = true
@@ -75,11 +75,9 @@ const caseEnd = () => {
     console.log('success')
     successTimer.value = null
     showBall.value = false
-    finish.value = true
     app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
-    success.value = true
-    localStorage.setItem('gameResult', 'success')
-    localStorage.setItem('gameState', 'finish')
+    state.value = 'success'
+    localStorage.setItem('gameState', 'success')
     setTimeout(() => {
       showMask.value = true
     }, 5000)
@@ -110,7 +108,18 @@ onMounted(() => {
     if (event.key === 'gameType') {
       game.value = event.newValue || 'yylm'
     }
+    if (event.key === 'gameState') {
+      state.value = event.newValue || 'playing'
+      if (event.newValue === 'playing') {
+        showMask.value = false
+      }
+    }
   })
+  window.addEventListener('beforeunload', () => localStorage.setItem('openGameFrame', 'false'))
+})
+
+onUnmounted(() => {
+  window.removeEventListener('beforeunload', () => localStorage.setItem('openGameFrame', 'false'))
 })
 </script>
 
@@ -167,6 +176,13 @@ onMounted(() => {
   .map {
     width: fit-content;
     position: relative;
+    .countdown {
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
   .start {
     width: 145px;
