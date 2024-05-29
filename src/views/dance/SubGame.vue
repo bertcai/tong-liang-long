@@ -77,9 +77,9 @@ const caseEnd = () => {
     showBall.value = false
     app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
     state.value = 'success'
-    localStorage.setItem('gameState', 'success')
     setTimeout(() => {
       showMask.value = true
+      localStorage.setItem('gameState', 'success')
     }, 5000)
   }, 2000)
 }
@@ -132,7 +132,7 @@ onUnmounted(() => {
   left: 0;
   display: flex;
   justify-content: center;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9/*  */);
   z-index: 999;
   .modal {
     margin-top: 299px;
