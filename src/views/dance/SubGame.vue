@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
-    <div class="map" ref="gameFrame" id="gameFrame" @mousemove="moveBall" :class="game">
+    <div class="map" ref="gameFrame" id="gameFrame" @pointermove="moveBall" @mousemove="moveBall" :class="game">
       <img v-if="state === 'playing'" :src="countdownUrl" class="countdown" />
       <img v-show="showBall" src="@/assets/img/dance/game/ball.png" id="ball" class="ball" />
       <img v-if="state === 'playing'" :src="list.find((item) => item.code === game)?.map" />
       <div class="start"></div>
-      <div class="end" @mouseenter="caseEnd" @mouseleave="leaveEnd"></div>
+      <div class="end" @mouseenter="caseEnd" @mouseleave="leaveEnd" @pointerenter="caseEnd" @pointerleave="leaveEnd"></div>
       <div class="attr start"></div>
       <div class="attr end"></div>
     </div>
@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { ref, inject, watch, onMounted, onUnmounted } from 'vue'
+import { init } from 'touchfree/src'
 import yylmBg from '@/assets/img/dance/game/yylm-bg.svg'
 import yylmMap from '@/assets/img/dance/game/yylm-map.svg'
 import yylmGif from '@/assets/img/dance/game/yylm-fn.gif'
@@ -50,6 +51,7 @@ const state = ref('playing')
 const successTimer = ref()
 
 const moveBall = (event: { clientX: number; clientY: number }) => {
+  console.log(event)
   showBall.value = true
   const ball = document.getElementById('ball') as any
   const wrapper = document.getElementById('gameFrame') as any
@@ -127,6 +129,7 @@ onMounted(() => {
     }
   })
   window.addEventListener('beforeunload', () => localStorage.setItem('openGameFrame', 'false'))
+  init()
 })
 
 onUnmounted(() => {
@@ -187,6 +190,9 @@ onUnmounted(() => {
   .map {
     width: fit-content;
     position: relative;
+    border: 4px dashed rgba(255, 255, 255, 0.5);
+    border-spacing: 5px;
+    padding: 4px;
     .countdown {
       pointer-events: none;
       position: absolute;
@@ -268,7 +274,7 @@ onUnmounted(() => {
     width: 1357px;
     height: 618px;
     position: absolute;
-    left: 235px;
+    left: 255px;
     bottom: 87px;
     .start {
       position: absolute;
