@@ -21,7 +21,12 @@
       :class="game"
     >
       <img v-if="state === 'playing'" :src="countdownUrl" class="countdown" />
-      <img v-show="showBall && state === 'playing'" src="@/assets/img/dance/game/ball.png" id="ball" class="ball" />
+      <img
+        v-show="showBall && state === 'playing'"
+        src="@/assets/img/dance/game/ball.png"
+        id="ball"
+        class="ball"
+      />
       <img v-if="state === 'playing'" :src="list.find((item) => item.code === game)?.map" />
       <div class="start"></div>
       <div
@@ -153,6 +158,7 @@ onMounted(() => {
       state.value = event.newValue || 'playing'
       if (event.newValue !== 'success' || event.newValue !== 'fail') {
         showMask.value = false
+        app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.bg})`
         clearTimeout(failTimer.value)
         failTimer.value = setTimeout(() => {
           state.value = 'fail'
@@ -173,7 +179,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.mp4{
+.mp4 {
   position: fixed;
   width: 1920px;
   height: 1080px;
