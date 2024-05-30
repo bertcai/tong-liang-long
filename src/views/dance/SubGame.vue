@@ -160,11 +160,16 @@ onMounted(() => {
       game.value = event.newValue || 'yylm'
     }
     if (event.key === 'gameState') {
-      state.value = event.newValue || 'playing'
-      if (event.newValue !== 'success' || event.newValue !== 'fail') {
+      state.value = event.newValue || 'interview'
+      clearTimeout(successTimer.value)
+      clearTimeout(failTimer.value)
+      if (state.value === 'chapter' || state.value === 'interview') {
         showMask.value = false
         app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.bg})`
-        clearTimeout(failTimer.value)
+      }
+      if (state.value === 'playing') {
+        showMask.value = false
+        app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.bg})`
         failTimer.value = setTimeout(() => {
           state.value = 'fail'
           showMask.value = true
