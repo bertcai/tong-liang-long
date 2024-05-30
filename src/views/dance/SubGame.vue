@@ -115,7 +115,6 @@ const caseEnd = () => {
     state.value = 'success'
     const gameGif = document.getElementById('gameGif') as any
     gameGif.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
-    failTimer.value = null
     setTimeout(() => {
       showMask.value = true
       localStorage.setItem('gameState', 'success')
@@ -175,7 +174,7 @@ onMounted(() => {
           showMask.value = true
           localStorage.setItem('gameState', 'fail')
           clearTimeout(successTimer.value)
-        }, 20000)
+        }, 25000)
       }
     }
   })
