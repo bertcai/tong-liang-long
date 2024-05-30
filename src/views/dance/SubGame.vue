@@ -1,4 +1,5 @@
 <template>
+  <div v-show="state === 'success' && showMask === false" id="gameGif" class="gif"></div>
   <div class="wrapper">
     <div v-if="state === 'interview' || state === 'chapter'" class="mp4">
       <video
@@ -27,7 +28,7 @@
         id="ball"
         class="ball"
       />
-      <img v-if="state === 'playing'" :src="list.find((item) => item.code === game)?.map" />
+      <img v-show="state === 'playing'" :src="list.find((item) => item.code === game)?.map" />
       <div class="start"></div>
       <div
         class="end"
@@ -103,13 +104,17 @@ const moveBall = (event: { clientX: number; clientY: number }) => {
 
 const caseEnd = () => {
   console.log('caseEnd')
+  if (successTimer.value) {
+    clearTimeout(successTimer.value)
+  }
   successTimer.value = setTimeout(() => {
     console.log('success')
     successTimer.value = null
     showBall.value = false
-    app.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
     clearTimeout(failTimer.value)
     state.value = 'success'
+    const gameGif = document.getElementById('gameGif') as any
+    gameGif.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
     failTimer.value = null
     setTimeout(() => {
       showMask.value = true
@@ -186,6 +191,13 @@ onUnmounted(() => {
   top: 0;
   left: 0;
   z-index: 999;
+}
+.gif {
+  position: fixed;
+  width: 1920px;
+  height: 1080px;
+  top: 0;
+  left: 0;
 }
 .mask {
   position: fixed;
