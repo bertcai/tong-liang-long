@@ -174,7 +174,7 @@ onMounted(() => {
           showMask.value = true
           localStorage.setItem('gameState', 'fail')
           clearTimeout(successTimer.value)
-        }, 25000)
+        }, 45000)
       }
     }
   })
