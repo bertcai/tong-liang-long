@@ -1,37 +1,19 @@
 <template>
   <div class="wrapper">
     <div class="circle">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-      <div class="line4"></div>
-      <div class="line5"></div>
-      <div class="row-center">
-        <span class="link" disabled to="/catalogues/dragonlamp/layout/jingjilong"></span>
-        <router-link class="link" to="/catalogues/dragonlamp/layout/darulong">大蠕龙</router-link>
-      </div>
-      <div class="row-center2">
-        <router-link class="link" to="/catalogues/dragonlamp/layout/daocaolong">稻草龙</router-link>
-        <router-link class="link" to="/catalogues/dragonlamp/layout/bandenglong"
-          >板凳龙</router-link
-        >
-      </div>
-      <div class="row-space-between">
-        <router-link class="link" to="/catalogues/dragonlamp/layout/hehualong">荷花龙</router-link>
-        <router-link class="link" to="/catalogues/dragonlamp/layout/cailong">小彩龙</router-link>
-      </div>
-      <div class="row-center2">
-        <router-link class="link" to="/catalogues/dragonlamp/layout/huangjinglong"
-          >黄荆龙</router-link
-        >
-        <router-link class="link" to="/catalogues/dragonlamp/layout/zhubanglong"
-          >竹梆龙</router-link
-        >
-      </div>
-      <div class="row-center">
-        <router-link class="link" to="/catalogues/dragonlamp/layout/huolong">火龙</router-link>
-        <router-link class="link" to="/catalogues/dragonlamp/layout/zhenglong">正龙</router-link>
-      </div>
+      <router-link class="link darulong" to="/catalogues/dragonlamp/layout/darulong">大蠕龙</router-link>
+      <router-link class="link daocaolong" to="/catalogues/dragonlamp/layout/daocaolong">稻草龙</router-link>
+      <router-link class="link bandenglong" to="/catalogues/dragonlamp/layout/bandenglong">板凳龙</router-link>
+
+      <router-link class="link hehualong" to="/catalogues/dragonlamp/layout/hehualong">荷花龙</router-link>
+      <router-link class="link xiaocailong" to="/catalogues/dragonlamp/layout/cailong">彩龙</router-link>
+
+      <router-link class="link huangjinglong" to="/catalogues/dragonlamp/layout/huangjinglong"
+        >黄荆龙</router-link
+      >
+      <router-link class="link zhubanglong" to="/catalogues/dragonlamp/layout/zhubanglong">竹梆龙</router-link>
+      <router-link class="link huolong" to="/catalogues/dragonlamp/layout/huolong">火龙</router-link>
+      <router-link class="link zhenglong" to="/catalogues/dragonlamp/layout/zhenglong">正龙</router-link>
     </div>
   </div>
 </template>
@@ -55,70 +37,60 @@
     font-weight: 400;
     opacity: 0.44;
     height: 54px;
-    width: 220px;
     &:hover {
       opacity: 1;
       font-size: 48px;
     }
   }
   .circle {
-    width: 900px;
-    display: flex;
-    flex-direction: column;
-    gap: 130px;
+    width: 812px;
+    height: 812px;
     position: relative;
-    .row-center {
-      display: flex;
-      justify-content: center;
-    }
-    .row-center2 {
-      display: flex;
-      justify-content: center;
-      gap: 350px;
-    }
-    .row-space-between {
-      display: flex;
-      justify-content: space-between;
-    }
-    .line1 {
+    background: url('@/assets/img/catalogues/dragonlamp/index-bg.svg') no-repeat center;
+    .darulong {
       position: absolute;
-      top: 50%;
-      transform: scale(0.8) rotate(90deg);
-      width: 100%;
-      height: 1px;
-      background: #fff;
+      top: 74px;
+      left: 353px;
     }
-    .line2 {
+    .daocaolong {
       position: absolute;
-      top: 50%;
-      transform: scale(0.8) rotate(126deg);
-      width: 100%;
-      height: 1px;
-      background: #fff;
+      top: 154px;
+      left: 150px;
     }
-    .line3 {
+    .bandenglong {
       position: absolute;
-      top: 50%;
-      transform: scale(0.8) rotate(162deg);
-      width: 100%;
-      height: 1px;
-      background: #fff;
+      top: 154px;
+      left: 551px;
     }
-    .line4 {
+    .hehualong {
       position: absolute;
-      top: 50%;
-      transform: scale(0.8) rotate(198deg);
-      width: 100%;
-      height: 1px;
-      background: #fff;
+      top: 319px;
+      left: 65px;
     }
-    .line5 {
+    .xiaocailong {
       position: absolute;
-      top: 50%;
-      transform: scale(0.8) rotate(233deg);
-      width: 100%;
-      height: 1px;
-      background: #fff;
+      top: 319px;
+      left: 675px;
+    }
+    .huangjinglong {
+      position: absolute;
+      top: 527px;
+      left: 85px;
+    }
+    .zhubanglong {
+      position: absolute;
+      top: 527px;
+      left: 623px;
+    }
+    .huolong {
+      position: absolute;
+      top: 668px;
+      left: 242px;
+    }
+    .zhenglong {
+      position: absolute;
+      top: 668px;
+      left: 481px;
     }
   }
 }
