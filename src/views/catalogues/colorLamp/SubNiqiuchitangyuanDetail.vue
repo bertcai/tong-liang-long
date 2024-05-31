@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>泥鳅吃汤圆详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/colorlamp/niqiuchitangyuan.png">
   </div>
 </template>
 

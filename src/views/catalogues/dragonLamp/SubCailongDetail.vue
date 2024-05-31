@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>彩龙详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/dragonlamp/cailong.png">
   </div>
 </template>
 

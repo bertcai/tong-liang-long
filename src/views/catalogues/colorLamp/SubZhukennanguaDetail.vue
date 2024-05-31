@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>猪啃南瓜详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/colorlamp/zhukennangua.png">
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>牌灯详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/colorlamp/paideng.png">
   </div>
 </template>
 

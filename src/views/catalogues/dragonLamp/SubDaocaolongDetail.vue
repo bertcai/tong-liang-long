@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>稻草龙详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/dragonlamp/daocaolong.png">
   </div>
 </template>
 

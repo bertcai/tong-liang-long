@@ -18,7 +18,7 @@
       </div>
       <div class="row-space-between">
         <router-link class="link" to="/catalogues/dragonlamp/layout/hehualong">荷花龙</router-link>
-        <router-link class="link" to="/catalogues/dragonlamp/layout/cailong">彩龙</router-link>
+        <router-link class="link" to="/catalogues/dragonlamp/layout/cailong">小彩龙</router-link>
       </div>
       <div class="row-center2">
         <router-link class="link" to="/catalogues/dragonlamp/layout/huangjinglong"

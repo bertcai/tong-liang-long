@@ -2,8 +2,8 @@
   <div class="lamp-wrapper">
     <div class="circle">
       <div class="box bg">
-        <div class="title">彩龙</div>
-        <div class="pinyin">cǎi lóng</div>
+        <div class="title">小彩龙</div>
+        <div class="pinyin">xiǎo cǎi lóng</div>
         <div class="case-in" @click="caseIn">进入</div>
       </div>
     </div>

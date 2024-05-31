@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>黄荆龙详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/dragonlamp/huangjinglong.png">
   </div>
 </template>
 

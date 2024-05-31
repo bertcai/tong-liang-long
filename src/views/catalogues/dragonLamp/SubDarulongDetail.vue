@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>大蠕龙详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/dragonlamp/darulong.png">
   </div>
 </template>
 

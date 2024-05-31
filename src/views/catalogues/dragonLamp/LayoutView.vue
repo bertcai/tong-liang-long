@@ -58,11 +58,11 @@ const navList = [
     showTitleString: '板凳龙'
   },
   {
-    title: '彩龙',
+    title: '小彩龙',
     link: '/catalogues/dragonlamp/layout/cailong',
     code: 'cailong',
-    pinyin: 'cǎi lóng',
-    showTitleString: '彩龙'
+    pinyin: 'xiǎo cǎi lóng',
+    showTitleString: '小彩龙'
   },
   {
     title: '竹梆龙',

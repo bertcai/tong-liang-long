@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>荷花龙详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/dragonlamp/hehualong.png">
   </div>
 </template>
 

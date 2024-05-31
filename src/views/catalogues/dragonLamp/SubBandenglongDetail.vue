@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>板凳龙详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/dragonlamp/bandenglong.png">
   </div>
 </template>
 

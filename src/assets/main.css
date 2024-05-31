@@ -100,9 +100,20 @@ body {
 
 }
 
-.pre{
-  .wrapper{
-    display: flex;
-    flex-direction: column;
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
+
+.catalogues-detail {
+  animation: fadeIn 0.3;
+  position: fixed;
+  top: 145px;
+  left: 0;
+  width: 1920px;
 }

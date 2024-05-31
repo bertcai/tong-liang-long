@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>十八学士详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/colorlamp/shibaxueshi.png">
   </div>
 </template>
 

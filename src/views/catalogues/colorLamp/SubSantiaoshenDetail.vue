@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>三条鲹详情</div>
+    <img class="catalogues-detail" src="@/assets/img/catalogues/colorlamp/santiaoshen.png">
   </div>
 </template>
 
