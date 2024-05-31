@@ -1,7 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="pre" @click="toDance">
-      <img class="art-text-btn" src="@/assets/img/text-wu.svg" />
+      <div class="art-text-btn">
+        <img src="@/assets/img/left-arrow.svg" />
+        <img src="@/assets/img/text-wu.svg" />
+      </div>
     </div>
     <div class="main">
       <div class="title title-font">
@@ -28,7 +31,10 @@
       </div>
     </div>
     <div class="next" @click="toScience">
-      <img class="art-text-btn" src="@/assets/img/text-deng.svg" />
+      <div class="art-text-btn">
+        <img src="@/assets/img/right-arrow.svg" />
+        <img src="@/assets/img/text-deng.svg" />
+      </div>
     </div>
   </div>
 </template>
