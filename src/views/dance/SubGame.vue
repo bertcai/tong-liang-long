@@ -118,7 +118,7 @@ const caseEnd = () => {
     setTimeout(() => {
       showMask.value = true
       localStorage.setItem('gameState', 'success')
-    }, 6000)
+    }, 4500)
   }, 2000)
 }
 
