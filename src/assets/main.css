@@ -79,12 +79,25 @@ body {
         line-height: normal;
         text-align: center;
         cursor: pointer;
-        animation: blink 2s infinite;
+        animation: blink-case-in 2s infinite;
         position: relative;
         z-index: 3;
       }
     }
   }
+}
+
+@keyframes blink-case-in{
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+
 }
 
 .pre{
