@@ -139,6 +139,21 @@ const backToIndex = () => {
 }
 </script>
 
+<style>
+@keyframes blink-subtitle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+</style>
+
 <style scoped>
 .wrapper {
   display: flex;
@@ -187,6 +202,7 @@ const backToIndex = () => {
     right: 0;
     display: flex;
     align-items: center;
+    animation: blink-subtitle 2s infinite;
     .art-word {
       display: flex;
       flex-direction: column;

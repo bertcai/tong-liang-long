@@ -201,6 +201,7 @@ const backToIndex = () => {
     right: 0;
     display: flex;
     align-items: center;
+    animation: blink-subtitle 2s infinite;
     .art-word {
       display: flex;
       flex-direction: column;
