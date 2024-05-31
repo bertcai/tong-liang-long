@@ -7,7 +7,7 @@
       <div class="line4"></div>
       <div class="line5"></div>
       <div class="row-center">
-        <router-link class="link" to="/catalogues/dragonlamp/layout/jingjilong">竞技龙</router-link>
+        <span class="link" disabled to="/catalogues/dragonlamp/layout/jingjilong"></span>
         <router-link class="link" to="/catalogues/dragonlamp/layout/darulong">大蠕龙</router-link>
       </div>
       <div class="row-center2">

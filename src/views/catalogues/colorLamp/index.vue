@@ -6,9 +6,7 @@
       <div class="line3"></div>
       <div class="line4"></div>
       <div class="row-center">
-        <router-link class="link" to="/catalogues/colorlamp/layout/xiniuwangyue">
-          犀牛望月</router-link
-        >
+        <span class="link" to="/catalogues/colorlamp/layout/xiniuwangyue"> </span>
         <router-link class="link" to="/catalogues/colorlamp/layout/paideng">牌灯</router-link>
       </div>
       <div class="row-space-between">

@@ -105,13 +105,6 @@ const navList = [
     code: 'daocaolong',
     pinyin: 'dào cǎo lóng',
     showTitleString: '稻草龙'
-  },
-  {
-    title: '竞技龙',
-    link: '/catalogues/dragonlamp/layout/jingjilong',
-    code: 'jingjilong',
-    pinyin: 'jìng jì lóng',
-    showTitleString: '竞技龙'
   }
 ]
 

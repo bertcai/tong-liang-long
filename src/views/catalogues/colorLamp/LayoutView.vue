@@ -91,13 +91,6 @@ const navList = [
     code: 'shibaxueshi',
     pinyin: 'shí bā xué shì',
     showTitleString: '十八学士'
-  },
-  {
-    title: '犀牛望月',
-    link: '/catalogues/colorlamp/layout/xiniuwangyue',
-    code: 'xiniuwangyue',
-    pinyin: 'xī niú wàng yuè',
-    showTitleString: '犀牛望月'
   }
 ]
 
