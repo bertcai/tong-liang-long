@@ -22,7 +22,8 @@
       </div>
       <div class="subtitle" v-if="isDetail">
         <div class="art-word" @click="backToLayout">
-          <h1>{{ active.title }}</h1>
+          <h1 v-if="active.title !== '三条鲹'">{{ active.title }}</h1>
+          <h1 v-else><img src="@/assets/img/catalogues/colorlamp/santiaoshen-title.svg" /></h1>
           <p>{{ active.pinyin }}</p>
         </div>
         <div class="logo" @click="backToIndex">
@@ -218,7 +219,7 @@ const backToIndex = () => {
         font-weight: 400;
         line-height: normal;
         background-image: -webkit-linear-gradient(
-          360deg,
+          270deg,
           #00c6fb 0%,
           #00b5f8 14.37%,
           #0074ee 72.55%,
@@ -227,6 +228,9 @@ const backToIndex = () => {
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        img{
+          margin-bottom: 13px;
+        }
       }
       p {
         color: #fff1f9;

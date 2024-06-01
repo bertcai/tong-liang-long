@@ -217,7 +217,7 @@ const backToIndex = () => {
         font-weight: 400;
         line-height: normal;
         background-image: -webkit-linear-gradient(
-          180deg,
+          90deg,
           #e8198b -0.02%,
           #e93295 24.57%,
           #ec73ad 76.66%,
