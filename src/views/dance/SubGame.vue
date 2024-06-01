@@ -117,6 +117,7 @@ const caseEnd = () => {
     gameGif.style.backgroundImage = `url(${list.find((item) => item.code === game.value)?.gif + '?' + Date.now()})`
     setTimeout(() => {
       showMask.value = true
+      showBall.value = false
       localStorage.setItem('gameState', 'success')
     }, 4500)
   }, 2000)
@@ -153,6 +154,8 @@ watch(
 const failTimer = ref()
 
 onMounted(() => {
+  const body = document.querySelector('body') as any
+  body.style.backgroundImage = 'none'
   game.value = localStorage.getItem('gameType') || 'yylm'
   window.addEventListener('storage', (event) => {
     if (event.key === 'gameType') {
@@ -172,6 +175,7 @@ onMounted(() => {
         failTimer.value = setTimeout(() => {
           state.value = 'fail'
           showMask.value = true
+          showBall.value = false
           localStorage.setItem('gameState', 'fail')
           clearTimeout(successTimer.value)
         }, 45000)
